@@ -9,3 +9,9 @@ def save_links(path,links):
 def save_jobs(path,json_list):
     with open(path,'w+') as f:
         json.dump(json_list,f,ensure_ascii=True,indent = 4)
+
+def createDir(path):
+    try: 
+        os.makedirs(path)
+    except:
+        print("folder existed")
