@@ -1,23 +1,13 @@
 # Bring your packages onto the path
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('..', 'utils')))
+sys.path.append(os.path.abspath(os.path.join('..', 'db_helper')))
 sys.path.append('../')
 print(sys.path)
 from bs4 import BeautifulSoup
-from requests.adapters import HTTPAdapter
-from urllib3.util import Retry
-import requests
-from utils import save_links,timeTransform,save_jobs,secondToDate, createDir
-
-def retryRequest(urls):
-    session = requests.Session()
-    retry = Retry(connect=4, backoff_factor=0.5)
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount('http://', adapter)
-    session.mount('https://', adapter)
-    response = session.get(urls)
-
-    return response
+from utils import *
+from db_helper import *
+from data_extract import *
 
 class Crawler(object):
 
@@ -71,6 +61,7 @@ class Crawler(object):
         Return in short for a job positions (title, location,company)
         """
         createDir('../data/{}'.format(self.name))
+        insertdb = Job()
         for url in self.urls:
             page_num = 1
             print(url)
@@ -85,46 +76,20 @@ class Crawler(object):
                 jobs = []
                 for item in main_section:
                     job = {'url':'','title':'','img':'','city':'','salary':'','update_time':'','company':''}
-                    compared_job =  {'url':'','title':'','img':'','city':'','salary':'','update_time':''}
-                    if 'itviec' in url:
-                        job['url'] = url.split('/it-jobs')[0] + item.select_one(self.job_list_selector)['href']
-                    if 'careerlink' in url:
-                        job['url'] = url.split('/viec-lam')[0] + item.select_one(self.job_list_selector)['href']
-                    else:
-                       job['url'] = item.select_one(self.job_list_selector)['href']
+                    # compared_job =  {'url':'','title':'','img':'','city':'','salary':'','update_time':''}
 
-                    job['title'] = item.select_one(self.title_selector).text
-                    try:
-                        job['img'] = item.select_one(self.img_selector)['data-src']
-                    except:
-                        job['img'] = item.select_one(self.img_selector)['src']
-
-                    try:
-                        job['city'] = item.select_one(self.location_selector).text
-                    except:
-                        job['city'] = ''
-
-                    try:
-                        job['update_time'] = secondToDate((item.select_one(self.time_selector))['data-datetime'])
-                    except:
-                        job['update_time'] = timeTransform(item.select_one(self.time_selector).text)
-                        print(item.select_one(self.time_selector).text)
-
-                    try:
-                        job['company'] = item.select_one(self.company_selector).text
-                    except:
-                        job['company'] = item.select_one(self.img_selector)['alt']
-
-                    try:
-                        job['salary'] = item.select_one(self.salary_selector).text
-                    except:
-                        job['salary'] = ''
-
-                    if compared_job != job:
-                        jobs.append(job)
+                    job['url'] = getUrl(item,self.job_list_selector,url)
+                    job['title'] = getTitle(item,self.title_selector)
+                    job['img'] = getImg(item,self.img_selector)
+                    job['city'] = getCity(item,self.location_selector)
+                    job['salary'] = getSalary(item,self.salary_selector)
+                    job['update_time'] = getUpdateTime(item,self.time_selector)
+                    job['company'] = getCompany(item,self.company_selector,self.img_selector)
+                    jobs.append(job)
                     # print(job)
                 print(jobs)
-                save_jobs('../data/{}/{}.json'.format(self.name,url.format(page_num = page_num).split('/')[-1]),jobs)
+                insertdb.insertJobData(jobs,'site_job')
+                # save_jobs('../data/{}/{}.json'.format(self.name,url.format(page_num = page_num).split('/')[-1]),jobs)
 
                 if main_section == []:
                     break
