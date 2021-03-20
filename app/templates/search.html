@@ -2,7 +2,7 @@
 {% block content %}
             <!-- Forum List -->
             <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
-                {% for job in jobData %}
+                {% for job in queryData %}
                 <div class="card mb-2">
                     <div class="card-body p-2 p-sm-3">
                         <div class="media forum-item">
@@ -23,7 +23,6 @@
                 </div>
                 {% endfor %}
 
-                {{ pagination.links }}
 
             </div>
             <!-- /Forum List -->
