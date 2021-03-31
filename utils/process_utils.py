@@ -29,6 +29,32 @@ def secondToDate(value):
 def textNormalize(str):
     return str.strip(' \n\r')
 
+def normalizeCity(city):
+    city = city.replace('Khu vực: ','')
+    if 'Hà Nội' in city and 'Hồ Chí Minh' not in city or 'Ha Noi' in city:
+        return 'Hà Nội'
+    if 'Hồ Chí Minh' in city and 'Hà Nội' not in city or 'Ho Chi Minh' in city:
+        return 'Tp Hồ Chí Minh'
+    if 'Da Nang' in city:
+        return 'Đà Nẵng'
+    if city == '':
+        return 'remote'
+    return city
+
+def getMonthYear(date_str):
+    month = date_str.split('/')[1]
+    if month[0] == '0':
+        month = month.replace('0','')
+    year = date_str.split('/')[2]
+    return  month + '-' + year
+
+def titleNormalize(title):
+    it_title = ['python','frontend','Java','.Net','tester','data engineer','iOS','React Native','PHP','Nodejs','golang','Ui/Ux','Backend']
+    for keyword in it_title:
+        if keyword in title:
+            return keyword
+    return title
+    
 if __name__ == '__main__':
     print(timeTransform('Cập nhật 2 tuần trước'))
     print(timeTransform('14h'))
