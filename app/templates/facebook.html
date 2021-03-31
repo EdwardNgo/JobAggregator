@@ -1,41 +1,13 @@
 {% extends "base.html" %}
 {% block nav %}
                                             <a href="/" class="nav-link nav-link-faded has-icon ">Recruitment Site</a>
-                                            <a href="/fb_rec" class="nav-link nav-link-faded has-icon">Facebook Recruitment</a>
+                                            <a href="/fb_rec" class="nav-link nav-link-faded has-icon active">Facebook Recruitment</a>
                                             <a href="/analytics" class="nav-link nav-link-faded has-icon">Statistics</a>
 {% endblock %}
 {% block content %}
             <!-- Forum List -->
             <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
-                {% for job in queryData %}
-                <div class="card mb-2">
-                    <div class="card-body p-2 p-sm-3">
-                        <div class="media forum-item">
-                            <a href="#" data-toggle="collapse" data-target=".forum-content"><img src = {{ job.img}} class="mr-3 " width="50" height="50" alt="User" /></a>
-                            <div class="media-body">
-                                <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">{{job.title}}</a></h6>
-                                <p class="text-secondary">
-                                 {{job.company}}
-                                </p>
-                                <p class="text-muted"> Thoi gian: <span class="text-secondary font-weight-bold">{{job.update_time}}</span></p>
-                            </div>
-                            <div class="text-muted medium text-right ">
-                                <p class="text-secondary">{{job.city}}</p>
-                                <p class="text-secondary">{{job.salary}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-
-
-            </div>
-            <!-- /Forum List -->
-
-            <!-- Forum Detail -->
-            
-            <div class="inner-main-body p-2 p-sm-3 collapse forum-content">
-                <a href="#" class="btn btn-light btn-sm mb-3 has-icon" data-toggle="collapse" data-target=".forum-content"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+                {% for job in jobData%}
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="media forum-item">
@@ -45,15 +17,13 @@
                             </a>
                             <div class="media-body ml-3">
                                 <a href="javascript:void(0)" class="text-secondary">Mokrani</a>
-                                <small class="text-muted ml-2">1 hour ago</small>
+                                <small class="text-muted ml-2">{{job.updated_time}}</small>
                                 <h5 class="mt-1">Realtime fetching data</h5>
-                                <div class="mt-3 font-size-sm">
-                                    <p>Hellooo :)</p>
-                                    <p>
-                                        I'm newbie with laravel and i want to fetch data from database in realtime for my dashboard anaytics and i found a solution with ajax but it dosen't work if any one have a simple solution it will be
-                                        helpful
-                                    </p>
-                                    <p>Thank</p>
+                                <div class="mt-3 font-size-sm" id = "content">
+                                    {% for line in job.splitted_message %}
+                                    <p>{{line}}</p>
+                                    {% endfor%}
+
                                 </div>
                             </div>
                             <div class="text-muted small text-center">
@@ -63,7 +33,16 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+                                            {{ pagination.links }}
+
             </div>
+
+            <!-- /Forum List -->
+
+            <!-- Forum Detail -->
+            
+
             <!-- /Forum Detail -->
 
             <!-- /Inner main body -->
@@ -105,3 +84,18 @@
 </div>
 </div>
 {% endblock %}
+<script>function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}</script>

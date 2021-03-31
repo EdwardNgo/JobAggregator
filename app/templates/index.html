@@ -1,10 +1,15 @@
 {% extends "base.html" %}
+{% block nav %}
+                                            <a href="/" class="nav-link nav-link-faded has-icon active">Recruitment Site</a>
+                                            <a href="/fb_rec" class="nav-link nav-link-faded has-icon">Facebook Recruitment</a>
+                                            <a href="/analytics" class="nav-link nav-link-faded has-icon">Statistics</a>
+{% endblock %}
 {% block content %}
             <!-- Forum List -->
             <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
                 {% for job in jobData %}
                 <div class="card mb-2">
-                    <div class="card-body p-2 p-sm-3">
+                    <div class="card-body p-2 p-sm-3" style="max-height:inherit">
                         <div class="media forum-item">
                             <a href="#" data-toggle="collapse" data-target=".forum-content"><img src = {{ job.img}} class="mr-3 " width="50" height="50" alt="User" /></a>
                             <div class="media-body">
@@ -17,6 +22,7 @@
                             <div class="text-muted medium text-right ">
                                 <p class="text-secondary">{{job.city}}</p>
                                 <p class="text-secondary">{{job.salary}}</p>
+                            
                             </div>
                         </div>
                     </div>
