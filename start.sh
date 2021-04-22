@@ -1,3 +1,3 @@
 source venv/bin/activate
-sudo systemctl start mongod
-sudo systemctl start elasticsearch
+systemctl start mongod
+systemctl start elasticsearch
