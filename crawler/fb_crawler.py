@@ -35,7 +35,8 @@ class ApiCrawler:
     
 def getAccessToken():
     print('\n** < GET FB ACCESS TOKEN FROM COOKIE > **\n')
-    cookie = " sb=9hkQYARdzQVl3vjvJ9U1ZjsA; datr=9hkQYPnEmetHvHqhPWJZb1Qj; m_pixel_ratio=1; _fbp=fb.1.1614905941345.1557415172; x-referer=eyJyIjoiL2dyb3Vwcy9weXRob25jb21tdW5pdHl2bi9wZXJtYWxpbmsvMzU5NDE2MjE5NDA1NzgwNC8%2FZnM9MSZmb2N1c19jb21wb3Nlcj0wIiwiaCI6Ii9ncm91cHMvcHl0aG9uY29tbXVuaXR5dm4vcGVybWFsaW5rLzM1OTQxNjIxOTQwNTc4MDQvP2ZzPTEmZm9jdXNfY29tcG9zZXI9MCIsInMiOiJtIn0%3D; locale=vi_VN; wd=1294x600; c_user=100033803722425; xs=37%3AvEnnKUDE5Je-Yw%3A2%3A1617076735%3A14236%3A6303; fr=1wsUIW15JK0lKoODH.AWVv2_z6SSn_pLsREXTUtpKKRh4.BgEBn2.DI.AAA.0.0.BgYqH_.AWX1i9xnyHc; spin=r.1003535859_b.trunk_t.1617076739_s.1_v.2_"
+    cookie = "sb=9hkQYARdzQVl3vjvJ9U1ZjsA; datr=9hkQYPnEmetHvHqhPWJZb1Qj; m_pixel_ratio=1; _fbp=fb.1.1614905941345.1557415172; x-referer=eyJyIjoiL2dyb3Vwcy9weXRob25jb21tdW5pdHl2bi9wZXJtYWxpbmsvMzU5NDE2MjE5NDA1NzgwNC8%2FZnM9MSZmb2N1c19jb21wb3Nlcj0wIiwiaCI6Ii9ncm91cHMvcHl0aG9uY29tbXVuaXR5dm4vcGVybWFsaW5rLzM1OTQxNjIxOTQwNTc4MDQvP2ZzPTEmZm9jdXNfY29tcG9zZXI9MCIsInMiOiJtIn0%3D; locale=vi_VN; wd=1294x600; c_user=100033803722425; xs=37%3AvEnnKUDE5Je-Yw%3A2%3A1617076735%3A14236%3A6303; fr=1wsUIW15JK0lKoODH.AWVv2_z6SSn_pLsREXTUtpKKRh4.BgEBn2.DI.AAA.0.0.BgYqH_.AWX1i9xnyHc; spin=r.1003535859_b.trunk_t.1617076739_s.1_v.2_"
+    cookie2 = "sb=dRcUYGUlNU7KnqEGLngBQ5_S; datr=dRcUYBfjkZFOJMaX3yH8tO-6; c_user=100012462527820; presence=C%7B%22t3%22%3A%5B%7B%22i%22%3A%22u.100005633893433%22%7D%2C%7B%22i%22%3A%22g.4122135711153071%22%7D%2C%7B%22i%22%3A%22p.2276249655987344%22%7D%2C%7B%22i%22%3A%22u.100009516524246%22%7D%2C%7B%22i%22%3A%22p.110117883887364%22%7D%2C%7B%22i%22%3A%22g.2965558100213255%22%7D%5D%2C%22utc3%22%3A1617162569505%2C%22v%22%3A1%7D; spin=r.1003553351_b.trunk_t.1617288463_s.1_v.2_; xs=42%3AccAm1QA-11Cs2g%3A2%3A1611929480%3A14236%3A6338%3A%3AAcXh05UfBC56glRnlJBovqwocarnBPuuQisHtAM3Zxc; fr=1c1Fit7ZfGnl54biy.AWVNACPdz-Tf6lWDTc3WWMlseJw.BgZd0S.Yd.AAA.0.0.BgZd0S.AWUtxbvxb2c"
     try:
         data = requests.get('https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_', headers = {
             'user-agent'                : 'Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36', # don't change this user agent.
@@ -67,12 +68,13 @@ if __name__ == "__main__":
 
     access_token = os.environ.get('access_token')
     access_token = getAccessToken()
-    if (access_token.startswith('EAA')):
-        print(access_token)
-        groups = ['https://www.facebook.com/groups/30580654243953',
-                'https://www.facebook.com/groups/174764463261090',
-                'https://www.facebook.com/groups/2028704957422810','130580654243953']
-        test =ApiCrawler(access_token,'https://graph.facebook.com/v10.0/')
-        test.getGroupPosts('130580654243953',1000)
-    else:
-        print("token not found")
+    print(access_token)
+    # if (access_token.startswith('EAA')):
+    #     print(access_token)
+    #     groups = ['https://www.facebook.com/groups/30580654243953',
+    #             'https://www.facebook.com/groups/174764463261090',
+    #             'https://www.facebook.com/groups/2028704957422810','130580654243953']
+    #     test =ApiCrawler(access_token,'https://graph.facebook.com/v10.0/')
+    #     test.getGroupPosts('130580654243953',1000)
+    # else:
+    #     print("token not found")

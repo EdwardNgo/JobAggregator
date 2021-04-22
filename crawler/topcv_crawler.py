@@ -1,6 +1,6 @@
 from site_crawler import *
 
-if __name__ == '__main__':
+def main():
     test2 = Crawler('topcv',
     ['https://www.topcv.vn/tim-viec-lam-cong-nghe-thong-tin-c10131?page={page_num}','https://www.topcv.vn/tim-viec-lam-it-phan-mem-c10026?page={page_num}','https://www.topcv.vn/tim-viec-lam-it-phan-mem-c10026?page={page_num}'],
     'h4.job-title > a',
@@ -13,3 +13,6 @@ if __name__ == '__main__':
     'div.job-list.search-result > div',
     '')
     test2.get_generic_job()
+    
+if __name__ == '__main__':
+    main()

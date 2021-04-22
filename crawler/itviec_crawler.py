@@ -1,5 +1,5 @@
 from site_crawler import * 
-if __name__ == "__main__":
+def main():
     test = Crawler('itviec',
     ['https://itviec.com/it-jobs?page={page_num}'],
     'h2.title > a',
@@ -12,3 +12,5 @@ if __name__ == "__main__":
     'div.first-group > div',
     '')
     test.get_generic_job()
+if __name__ == "__main__":
+    main()

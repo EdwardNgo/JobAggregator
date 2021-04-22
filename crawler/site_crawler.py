@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from utils import *
 from db_helper import *
 from data_extract import *
-
+from datetime import datetime
 class Crawler(object):
 
     def __init__(self,name,urls,job_list_selector,img_selector,title_selector,company_selector,tags_selector,location_selector,time_selector,main_section_selector,salary_selector):
@@ -23,6 +23,21 @@ class Crawler(object):
         self.location_selector = location_selector
         self.main_section_selector = main_section_selector
         self.salary_selector = salary_selector
+
+    def get_site_attribute(self):
+        return {
+            'name':self.name,
+            'urls':self.urls,
+            "job_list_selector":self.job_list_selector,
+            "img_selector":self.img_selector,
+            "img_selector":self.title_selector,
+            "company_selector":self.company_selector,
+            "tags_selector":self.tags_selector,
+            "time_selector":self.time_selector ,
+            "location_selector":self.location_selector, 
+            "main_section_selector":self.main_section_selector,
+            "salary_selector":self.salary_selector 
+        }
 
     def get_all_job_list(self):
         """
@@ -55,7 +70,12 @@ class Crawler(object):
         Return the Job Description of a job
         """
         return
-    
+    # def get_pagniation_urls(url):
+    #     page_num = 1
+    #     while(True):
+    #         res = retryRequest(url.format(page_num = page_num))
+    #         if response.status_code != 200:
+    #             break
     def get_generic_job(self):
         """
         Return in short for a job positions (title, location,company)
@@ -64,18 +84,19 @@ class Crawler(object):
         insertdb = Job()
         for url in self.urls:
             page_num = 1
-            print(url)
-            while(True):
+            # print(url)
+            flag = True
+            while(flag):
                 response = retryRequest(url.format(page_num = page_num))
                 if response.status_code != 200:
                     break
 
                 soup = BeautifulSoup(response.content, 'html.parser')
                 main_section = soup.select(self.main_section_selector)
-                print(len(main_section))
+                # print(len(main_section))
                 jobs = []
                 for item in main_section:
-                    job = {'url':'','title':'','img':'','city':'','salary':'','update_time':'','company':''}
+                    job = {'url':'','title':'','img':'','city':'','salary':'','update_time':'','company':'','month_year':''}
                     # compared_job =  {'url':'','title':'','img':'','city':'','salary':'','update_time':''}
 
                     job['url'] = getUrl(item,self.job_list_selector,url)
@@ -85,15 +106,27 @@ class Crawler(object):
                     job['salary'] = getSalary(item,self.salary_selector)
                     job['update_time'] = getUpdateTime(item,self.time_selector)
                     job['company'] = getCompany(item,self.company_selector,self.img_selector)
+                    try:
+                        job['month_year'] = getMonthYear(job['update_time'])
+                    except:
+                        pass
+                    news_time = datetime.strptime(job['update_time'].replace("/20","/"),"%d/%m/%y")
+                    current_day  = datetime.today()
+                    delta = current_day - news_time
+                    if(delta.days > 2):#neu tin duoc lay ma da ra truoc 2 ngay thi khong can phai lay nua -> tat ca cac tin sau cung the
+                        flag = False
+                        break
                     jobs.append(job)
                     # print(job)
-                print(jobs)
-                insertdb.insertJobData(jobs,'site_job')
+                # print(jobs)
+
+                insertdb.insertJobData(jobs,'test_raw_site_job')
                 # save_jobs('../data/{}/{}.json'.format(self.name,url.format(page_num = page_num).split('/')[-1]),jobs)
 
                 if main_section == []:
                     break
                 page_num += 1
+        
     
 
 if __name__ == '__main__':

@@ -9,12 +9,12 @@ def getUrl(item,selector,url):
     elif 'careerlink' in url:
         return url.split('/viec-lam')[0] + item.select_one(selector)['href']
     else:
-        print('ha')
+        # print('ha')
         return item.select_one(selector)['href']
     return ''
 
 def getTitle(item,selector):
-    return textNormalize(item.select_one(selector).text)
+    return titleNormalize(textNormalize(item.select_one(selector).text))
 
 def getImg(item,selector):
     try:
@@ -24,7 +24,7 @@ def getImg(item,selector):
 
 def getCity(item,selector):
     try:
-        return textNormalize(item.select_one(selector).text)
+        return cityNormalize(textNormalize(item.select_one(selector).text))
     except:
         return ''
 
