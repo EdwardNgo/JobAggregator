@@ -27,9 +27,13 @@ def secondToDate(value):
     return datetime.fromtimestamp(int(value)).strftime("%d/%m/%Y")
 
 def textNormalize(str):
+    str = str.replace("\r","")
+    str = str.replace("\n","")
+    str = str.strip()
+    str = re.sub("\s+"," ",str)
     return str.strip(' \n\r')
 
-def normalizeCity(city):
+def cityNormalize(city):
     city = city.replace('Khu vực: ','')
     if 'Hà Nội' in city and 'Hồ Chí Minh' not in city or 'Ha Noi' in city:
         return 'Hà Nội'
@@ -51,7 +55,7 @@ def getMonthYear(date_str):
 def titleNormalize(title):
     it_title = ['python','frontend','Java','.Net','tester','data engineer','iOS','React Native','PHP','Nodejs','golang','Ui/Ux','Backend']
     for keyword in it_title:
-        if keyword in title:
+        if keyword in title.lower():
             return keyword
     return title
     
@@ -60,3 +64,6 @@ if __name__ == '__main__':
     print(timeTransform('14h'))
     print(secondToDate('1614388687'))
     print(textNormalize('\r\n                    Senior Product Manager\r\n                                                                            '))
+    print(textNormalize("Chuyên viên Phát triển Ứng dụng\r\n                                         (Mới)"))
+    print(titleNormalize('nhân viên Tester'))
+    
