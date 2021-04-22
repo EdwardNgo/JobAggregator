@@ -63,8 +63,49 @@ def fb():
                            per_page=per_page,
                            pagination=pagination,
                            )
-@app.route('/analytics',methods=['GET', 'POST'])
+# @app.route('/analytics',methods=['GET', 'POST'])
+# def analytics():
+#     topCompany = simpleAnalyse('raw_site_job','company')
+#     topRegion = simpleAnalyse('raw_site_job','location')
+#     topTitle = simpleAnalyse('raw_site_job','title')
+#     print(topCompany)
+#     return render_template('analytics.html',topCompany=topCompany)
+
+@app.route('/analytics',methods = ['GET', 'POST'])
 def analytics():
-    return render_template('analytics.html')
+
+    
+    # getKPIUsers = {
+    #         'totalUsers': 200,
+    #         'recent24hUsers': 24,
+    #         'recentWeekusers': 48
+    # }
+
+    #phan tich cong ty tuyen nhieu nhat den hien tai
+    topCompany = simpleAnalyse('raw_site_job','company',top = 10)
+    companyLabel = list(topCompany.keys())
+    recruitValue = list(topCompany.values())
+    #phan tich viec lam theo thanh pho
+    topCity = simpleAnalyse('raw_site_job','city',top  = 5)
+    cityLabel  = list(topCity.keys())
+    cityValue = list(topCity.values())
+    #thong ke luong tin tuyen dung theo ngay
+    dailyRecruitment = recruitmentByDay('raw_site_job','4-2021')
+    dailyRecruitmentLabel = list(dailyRecruitment.keys())
+    dailyRecruitmentValue = list(dailyRecruitment.values())
+    # print(topCompany)
+    # print(list(companyLabel))
+    #thong ke ten cac vi tri hay duoc tuyen dung
+    topTitle = simpleAnalyse('raw_site_job','title',top= 20)
+    topTitleLabel = list(topTitle.keys())
+    print(topTitleLabel)
+    topTitleValue = list(topTitle.values())
+    print(topTitle)
+    return render_template("analytics.html",
+                    recruitValue=recruitValue,companyLabel=companyLabel,
+                    cityValue = cityValue,cityLabel = cityLabel,
+                    dailyRecruitmentLabel = dailyRecruitmentLabel,dailyRecruitmentValue = dailyRecruitmentValue,
+                    topTitleLabel = topTitleLabel,topTitleValue = topTitleValue,)
+
 if __name__ == '__main__':
     app.run(debug=True)
