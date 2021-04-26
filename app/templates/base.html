@@ -38,6 +38,7 @@
     border-right: 1px solid #cbd5e0;
     background-color: #fff;
     z-index: 1;
+    position:fixed;
 }
 .inner-main {
     right: 0;
@@ -143,7 +144,9 @@
 <body>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
-
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>
 <div class="container" style="min-height:100vh">
 <div class="main-body p-0" >
     <div >
@@ -183,23 +186,9 @@
         <!-- /Inner sidebar -->
 
         <!-- Inner main -->
-        <div class="inner-main">
-            <!-- Inner main header -->
-            <div class="inner-main-header">
-                <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
-                <select class="custom-select custom-select-sm w-auto mr-1">
-                    <option selected="">Latest</option>
-                    <option value="1">Popular</option>
-                    <option value="2">Facebook</option>
-            
-                </select>
-                <span class="input-icon input-icon-sm ml-auto w-auto">
-                    <form method = "post" action = "/search" class = 'query'>
-                    <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200 shadow-none mb-4 mt-4" placeholder="Search" /name = 'query'>
-                    </form>
-                </span>
-            </div>
-        <div>
+        {% block search %}
+        {% endblock %}
+
     </div>
             <!-- /Inner main header -->
 
@@ -209,9 +198,7 @@
 {% block content %}
 {% endblock %}
 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript"></script>
+
 
 </body>
 </html>
