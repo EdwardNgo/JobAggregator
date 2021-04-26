@@ -9,6 +9,6 @@ Gõ lệnh:
 ```pip install requirements.txt
 ```
 ```
-## . Run start.sh
-```source start.sh
+## . Run init.sh
+```source init.sh
 ```

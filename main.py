@@ -6,6 +6,7 @@ sys.path.append(os.path.abspath(os.path.join(os.getcwd(), 'crawler')))
 sys.path.append('../')
 print(sys.path)
 from crawler import careerbuilder_crawler,itviec_crawler,topcv_crawler,careerlink_crawler
+from db_helper import mongoToEs
 from db_helper import siteDup
 import _thread
 import threading
@@ -20,16 +21,17 @@ if __name__ == '__main__':
     # except:
     #     print ("Error: unable to start thread")
     p1 = Process(target = careerbuilder_crawler.main())
-    p1.start()
     p2 = Process(target = itviec_crawler.main())
-    p2.start()
     p3 = Process(target = topcv_crawler.main())
-    p3.start()
     p4 = Process(target = careerlink_crawler.main())
+    p1.start()
+    p2.start()
+    p3.start()
     p4.start()
     #phai co join neu khong thi no van la sequential
     p1.join()
     p2.join()
     p3.join()
     p4.join()
-    siteDup('raw_site_job')
+    siteDup('new_raw_site_job')
+    mongoToEs('new_raw_site_job','new_raw_site_job')

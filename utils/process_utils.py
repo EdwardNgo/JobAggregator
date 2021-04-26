@@ -58,7 +58,14 @@ def titleNormalize(title):
         if keyword in title.lower():
             return keyword
     return title
-    
+
+def removeHtmlTag(text):
+    TAG_RE = re.compile(r'<[^>]+>')
+    text = text.replace("\n",'')
+    text = TAG_RE.sub('.', text)
+    text = re.sub("\.+",'.',text)
+    return text.replace(':.','.')
+
 if __name__ == '__main__':
     print(timeTransform('Cập nhật 2 tuần trước'))
     print(timeTransform('14h'))
@@ -66,4 +73,7 @@ if __name__ == '__main__':
     print(textNormalize('\r\n                    Senior Product Manager\r\n                                                                            '))
     print(textNormalize("Chuyên viên Phát triển Ứng dụng\r\n                                         (Mới)"))
     print(titleNormalize('nhân viên Tester'))
+    print(removeHtmlTag("""<div class="job-details__paragraph">
+<p><p>As a key member of the team, you’ll have a say in which employee perks we should provide you.</p><p><strong>REMUNERATION:</strong></p><ul><li>Competitive salary and excellent benefits</li><li>Bonus: performance and loyalty bonuses, team bonus, annual bonus (13th-month salary)</li><li>Salary review based on performance (every 3-6 months)</li></ul><p><strong>PERKS AND BENEFITS:</strong></p><ul><li>A cool and modern co-working space</li><li>Laptop + 2nd monitor</li><li><strong>Flexible working hours</strong></li><li><strong>5</strong> workdays/week, <strong>15</strong> paid vacation days/year</li><li>Parking allowance, unlimited snacks, and drinks</li><li>Bao Viet Healthcare insurance</li><li>Social insurance, medical insurance, unemployment insurance according to Vietnam Labor Law</li></ul><p><strong>DEVELOPMENT OPPORTUNITIES:</strong></p><ul><li>There’s <strong>unlimited potential for career growth</strong></li><li>Work in a vibrant and energetic space with startups and talented pros</li><li>Work for an international company with the <strong>potential for travel to Australia</strong></li></ul><p><strong>RECREATIONAL ACTIVITIES:</strong></p><ul><li>Annual company trip</li><li>Regular team building activities</li><li>Happy Fridays with discretional food and games</li></ul></p>
+</div>"""))
     
