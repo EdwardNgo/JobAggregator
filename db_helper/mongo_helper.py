@@ -4,6 +4,9 @@ from collections import OrderedDict
 myclient = MongoClient("mongodb://localhost:27017/")
 mydb = myclient["JobAggregator"]
 from datetime import datetime
+from bson.json_util import dumps
+from bson.objectid import ObjectId
+
 class Job(object):
     def __init__(self,client = MongoClient("mongodb://localhost:27017/") ,db = MongoClient("mongodb://localhost:27017/")["Job_Aggregator"]):
         self.client = client
@@ -16,13 +19,26 @@ class Job(object):
             print("Insert Successfully")
         except Exception as e:
             print(e)
+
     def getJobData(self,colname):
         col = self.db[colname]
-        cursor = col.find()
+        # col.updateMany({},{"$set":{"id":ObjectId})
+        cursor = col.aggregate([{
+        '$sort': {
+            'published': -1
+        }
+        }
+        ])
         data = []
         for document in cursor:
             data.append(document)
         return data
+
+    def getJobById(self,colname,id):
+        col = self.db[colname]
+        cursor = col.find_one({'_id':ObjectId(id)})
+        resp = dumps(cursor)
+        return resp
 
 #xoa ban ghi trung lap
 def siteDup(collection_name):
@@ -84,7 +100,7 @@ def simpleAnalyse(collection_name,field,top=5):
     return incrField
 def recruitmentByDay(collection_name,month):
     client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
-    cursor = client['Job_Aggregator']['raw_site_job'].aggregate([
+    cursor = client['Job_Aggregator'][collection_name].aggregate([
         {
             '$match': {
                 'month_year': {
@@ -109,7 +125,7 @@ def recruitmentByDay(collection_name,month):
         incrDay['Date'] = i['_id']['month_year']
         incrDay['numberOfRecruit'] = i['count']
         incrDayList.append(incrDay)
-
+    print(incrDayList)
     incrDayList.sort(key = lambda x:x['Date'])#phai sort theo ngay tu dau thang den cuoi thang
     day_dict = dict()
     for day in incrDayList:
