@@ -1,5 +1,7 @@
 from site_crawler import *
 def main():
+    print("Start Crawler 3")
+
     test3 = Crawler('careerlink',
     ['https://www.careerlink.vn/viec-lam/cntt-phan-cung-mang/130?page={page_num}','https://www.careerlink.vn/viec-lam/cntt-phan-mem/19?page={page_num}'],
     'a.job-link.clickable-outside',
@@ -10,7 +12,8 @@ def main():
     'div.list-with-comma > a.text-reset',
     'span.cl-datetime',
     'ul.list-group.mt-4 > li',
-    'span.job-salary.text-primary')
+    'span.job-salary.text-primary',
+    'div.raw-content')
     test3.get_generic_job()
 
 if __name__ == '__main__':

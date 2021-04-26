@@ -33,7 +33,7 @@ def getUpdateTime(item,selector):
         #mot so trang se co dang x/y/z
         return secondToDate((item.select_one(selector))['data-datetime'])
     except:
-        print(timeTransform(item.select_one(selector).text))
+        # print(timeTransform(item.select_one(selector).text))
         return timeTransform(item.select_one(selector).text)
 
         

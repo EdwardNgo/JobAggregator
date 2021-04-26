@@ -1,5 +1,7 @@
 from site_crawler import *
 def main():
+    print("Start Crawler 4")
+
     test4 = Crawler('careerbuilder',
     ['https://careerbuilder.vn/viec-lam/cntt-phan-mem-c1-trang-{page_num}-vi.html','https://careerbuilder.vn/viec-lam/cntt-phan-cung-mang-c63-trang-{page_num}-vi.html'],
     'a.job_link',
@@ -10,7 +12,8 @@ def main():
     'div.location > ul > li',
     'div.time > time',
     'div.jobs-side-list > div > div',
-    'div.salary > p')
+    'div.salary > p',
+    'div.detail-row')
     test4.get_generic_job()
 if __name__ == '__main__':
     main()
