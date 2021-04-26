@@ -11,7 +11,7 @@ def connect_elasticsearch():
         print('Awww it could not connect!')
     return _es
 
-def create_index(es_object, index_name,properties):
+def create_index(es_object, index_name):
     created = False
     # index settings
     settings = {
@@ -19,10 +19,7 @@ def create_index(es_object, index_name,properties):
             "number_of_shards": 1,
             "number_of_replicas": 0
         },
-        "mappings":  {
-                "dynamic": "strict",
-                "properties":properties
-            }
+
         
     }
     print(settings)
@@ -57,16 +54,22 @@ def search_record(index_name,query):
     except:
         print("Not found any value match your search")
     return search_res
+
+def mongoToEs(colname,index_name):
+    job = Job()
+    jobData = job.getJobData(colname)
+    es = connect_elasticsearch() 
+
+    create_index(es,index_name)
+    for data in jobData:
+        # print(data)
+        # print(data)
+        data['id'] = str(data['_id'])
+        data.pop("_id", None)
+        store_record(es,index_name,data)
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.ERROR)
-    # job = Job()
-    # jobData = job.getJobData('site_job')
-    # properties = {"title": {"type": "text"},"city": {"type": "text"},"url": {"type": "text"},"img": {"type": "text"},"salary": {"type": "text"},"update_time": {"type": "text"},"company": {"type": "text"}}
-    # es = connect_elasticsearch() 
-
-    # # create_index(es,'site_jobs',properties)
-    # for data in jobData:
-    #     data.pop('_id', None)
-    #     # print(data)
-    #     store_record(es,'site_jobs',data)
+    mongoToEs('new_raw_site_job','new_raw_site_job')
+    mongoToEs('fb_job','fb_job')
     # print(search('site_jobs','php'))
