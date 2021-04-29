@@ -1,7 +1,10 @@
 import logging
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch,helpers
 from mongo_helper import *
 import requests
+from elasticsearch_dsl import Search
+from elasticsearch_dsl.query import Match
+
 def connect_elasticsearch():
     _es = None
     _es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
@@ -68,8 +71,42 @@ def mongoToEs(colname,index_name):
         data.pop("_id", None)
         store_record(es,index_name,data)
 
+
+def genMongoData(colname):
+    myclient = MongoClient("mongodb://188.166.228.248:27017/")
+    mydb = myclient["newsbuzzer"]
+    col = mydb[colname]
+    cursor = col.find({}).limit(1000)
+    data = []
+    for doc in cursor:
+        yield doc
+
+def mongoToEs2(colname,index_name):
+    myclient = MongoClient("mongodb://188.166.228.248:27017/")
+    mydb = myclient["newsbuzzer"]
+    col = mydb[colname]
+    cursor = col.find({}).limit(1000)
+    es = connect_elasticsearch() 
+    create_index(es,index_name)
+    for data in cursor:
+        data['id'] = str(data['_id'])
+        data.pop("_id", None)
+        store_record(es,index_name,data)
+
+def search(index_name,field):
+    es = connect_elasticsearch()
+    # client = Search(using  = es.index(index = index_name))
+    # q = Match(field={"query": "đốt"})
+    # s = client.query(q)
+    # resp = s.execute()
+    # resp = es.search(index=index_name, body = {"query": {"match": {field:"đốt"}}})
+    resp = es.search(index=index_name, body = {"query": {"multi_match":{"query":"đốt","fields":["body_tokenized",field]}}})
+
+    return resp
 if __name__ == '__main__':
     logging.basicConfig(level=logging.ERROR)
-    mongoToEs('new_raw_site_job','new_raw_site_job')
-    mongoToEs('fb_job','fb_job')
+    # mongoToEs('new_raw_site_job','new_raw_site_job')
+    # mongoToEs('fb_job','fb_job')
+    # mongoToEs2('raw_article',"raw_article")
     # print(search('site_jobs','php'))
+    print(search('raw_article','title_tokenized'))
