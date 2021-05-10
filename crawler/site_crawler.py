@@ -129,7 +129,7 @@ class Crawler(object):
                     news_time = datetime.strptime(job['update_time'].replace("/20","/"),"%d/%m/%y")
                     current_day  = datetime.today()
                     delta = current_day - news_time
-                    if(delta.days > 2):#neu tin duoc lay ma da ra truoc 2 ngay thi khong can phai lay nua -> tat ca cac tin sau cung the
+                    if(delta.days > 4):#neu tin duoc lay ma da ra truoc 2 ngay thi khong can phai lay nua -> tat ca cac tin sau cung the
                         flag = False
                         break
                     # print(job)
