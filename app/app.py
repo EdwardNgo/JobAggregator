@@ -117,7 +117,7 @@ def analytics():
     cityLabel  = list(topCity.keys())
     cityValue = list(topCity.values())
     #thong ke luong tin tuyen dung theo ngay
-    dailyRecruitment = recruitmentByDay('new_raw_site_job','4-2021')
+    dailyRecruitment = recruitmentByDay('new_raw_site_job','5-2021')
     dailyRecruitmentLabel = list(dailyRecruitment.keys())
     dailyRecruitmentValue = list(dailyRecruitment.values())
     print(dailyRecruitment)
@@ -149,6 +149,8 @@ def jobById(id):
     # print(json_resp)
     # print(re.split('\.+',json_resp['cleaned_text']))
     return render_template("details.html",job = json_resp)
-
+@app.route('/map',methods=['GET'])
+def map():
+    return render_template("map.html")
 if __name__ == '__main__':
     app.run(debug=True)
