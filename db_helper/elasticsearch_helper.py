@@ -81,11 +81,11 @@ def genMongoData(colname):
     for doc in cursor:
         yield doc
 
-def mongoToEs2(colname,index_name):
+def mongoToEs2(colname,index_name,limit = 1000):
     myclient = MongoClient("mongodb://188.166.228.248:27017/")
     mydb = myclient["newsbuzzer"]
     col = mydb[colname]
-    cursor = col.find({}).limit(1000)
+    cursor = col.find({}).limit(limit)
     es = connect_elasticsearch() 
     create_index(es,index_name)
     for data in cursor:
@@ -107,6 +107,6 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.ERROR)
     # mongoToEs('new_raw_site_job','new_raw_site_job')
     # mongoToEs('fb_job','fb_job')
-    # mongoToEs2('raw_article',"raw_article")
+    mongoToEs2('raw_article',"raw_article_2",10000)
     # print(search('site_jobs','php'))
-    print(search('raw_article','title_tokenized'))
+    # print(search('raw_article_2','title_tokenized'))

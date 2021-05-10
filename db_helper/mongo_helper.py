@@ -18,6 +18,7 @@ class Job(object):
             col.insert_many(data)
             print("Insert Successfully")
         except Exception as e:
+            # col.insert_one(data)
             print(e)
 
     def getJobData(self,colname):
