@@ -33,5 +33,5 @@ if __name__ == '__main__':
     p2.join()
     p3.join()
     p4.join()
-    siteDup('new_raw_site_job')
-    mongoToEs('new_raw_site_job','new_raw_site_job')
+    # siteDup('new_raw_site_job')
+    # mongoToEs('new_raw_site_job','new_raw_site_job')
