@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="zc-html">
+    <head>
+        <meta charset="utf-8" />
+        <title>ZingSoft Demo</title>
+        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <style>
+            .zc-body {
+                background: #eee;
+            }
+            .chart--container {
+                height: 100%;
+                width: 100%;
+                min-height: 650px;
+            }
+            .zc-ref {
+                display: none;
+            }
+        </style>
+    </head>
+    <body class="zc-body">
+        <div id="myChart" class="chart--container"><a href="https://www.zingchart.com/" rel="noopener" class="zc-ref">Powered by ZingChart</a></div>
+        <script>
+            ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
+            var imgR =
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKdSURBVFhHvde7axRRFAbwOGgSI0JiNLt3JjaKiH+ECj4QDUQjxGRmDVG0EsTKQlCwsVCxtIqVlWhshBRhJ64PULRUfIKNYq2gqBhf34l78e65387cNBY/knz3zHfCZnd20xFF0aLkZrKam+xEHmc34FHTdTiem7EBdk0RGjKNZLh7Lh4/n5v0G5b9buMLnJsd3NHFOhgaarmprUbxY2dRmQd5PNbHujQauvCwdqLwoVoQ4t50snUZ63TR0IWis6r4H5P+WsDOhMlOsU4XDa165Ugfij75xekT2H072d9VrxzuxqIh5M+8uTj7WK8eWsm6LRpaWHLUKzXp00Yy4pXirBdetMwuzNcm9KyLhhYKrvqF6R42K3A+4s3H2RSbtWhoYdl9r9DUlrNZgXN5FFrn4yxnsxYNLfwCcpNpLaxO9rBZIS89bx6vBjZr0dDCxTOqTOxlswJnB9SsuMVmLRpaeAQueIUme4Vn9ip/Fjcrk77x5uPsop510dBC4U5SKF7DaF6d6P+7OBvHz2y5PGeGWbdFQ2t24NhSlLzzSsN9KHrSChq6UHJSlS7GJdbpoqHrzuBQD4req+IQn/GnMazTRUMNZQdVeTmTnmFdGg21u2t3LUFhgy7iXsr7BOvSaMjgGb8RxV/VIuYnHvotrIOhYTsoP62WMZfZte3QsJ3mh5PnaqHr7VwyWvj2q9GwCJZsU0td+9g1RWhYBoum1WIxw2bL0LAMXhEbsPC7s3weNrHZMjQMgYVTzi9whc2EoGEIvPevx+IfMI+X6Do2E4KGofCnuAnX2FkoGobCDWc73u02s7NQNAwlt2h8FfQ8BA3/JxoWWAHycWwNVKDaJN9LJmcyw66laFigE+RW2wuyrL9JvpdMzoL/M46iqOMP6m+Q/Ztim1YAAAAASUVORK5CYII=";
+            var imgO =
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKSSURBVFhHvde7a1RBGAXwyNFEI0JifMRWEfE/sNFCiRCVxBS7ezcmhaCNoGkUFBKwsTBiaRUrK/HRCOkEQUHRUvEJNj5qBSWKUcfzhR0yO3P23klj8cNw5tvzrZu7dzddAFbEjWLQNTDlmrhNT1tuuXGcdsewRT2mjAwVdwZr3QQuuwI/udB1sMAncmnhPHpUhyLDmKthE8ufRcvKPHaT6FddMRmG+LJ2s/BJtCDHw09TWKM6QzIMsehiVLyswN8l6szUcUF1hmTouYPoZ9G3pLjAcxp2J9HjhnltNHCY+ctkromv7gg2qG5Phh6XnEhKC7xwp9JSnvXR67ZZU8NkPBuSoceCG0lhgUNq1vB8LJlvYk7NejL0uOxRUljDOjVreG6vQvt8E/fVrCdDj0/AbjLthSPoVbPG3nrJPN8NataToccHz0dlZlTNGp7Vo1lzT816MvT4CswmhXW85ZW9MZm1m1WB98l8E1fi2ZAMPRYOiULzjrfcmhvDwNLiBgpmarldMyOq25Oh5/ZgNUs+JqX5vpRdtEaGIZaci0pX4qrqDMkw5M6il0Wfo+Ic3/mr2aY6QzKMsWwiKq9WYEZ1xWQYc9NYxcIHcpH2xj4nVFdMhgqv+F0s/hEtUv7wpd+nOhQZdsLy6WhZahzX1GM7kWEnrS8nr5Klyz644+UfvzEZluH/cL9Y7B1VjykjwypcdCdabObVbBUZVuE7YicX/gqWL9JuNVtFhjm4cC54AtfVTA4Z5uBn/w4u/k2LfItuVzM5ZJiLv4q7dFOd5ZJhLn43OMBPu73qLJcMc9ktmv8aeZ5Dhv+TDEusJ/s6tpm20mCL/WyZndmMeqwkwxLdZLfaPrJlAy32s2V2lv2XMYCufxjtz8LkGe86AAAAAElFTkSuQmCC";
+            var imgG =
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKcSURBVFhHvdfLS1RhGAZwO+SlmTnjGa3UbRHRH5ELw0UFXRaJC921FSFoERW4MSovSGqQIy0EKbQ24ZwxFQIDI5dJV2ijtC5IKrLb8+J88vnOc875ZtPiR/Z87zzvNHPmjFV5nleRidBvHgv93rEwOwsvS2ag507RP8geE4eGzM2FoG50PntrNMz8wLK/Eb5B/9W5XC3rYGio3Q39/ShetRYlWRkJsznWpdHQhpe1BoUv1AIXy5ceBNWs00ZDG4r6VPEOvB1/BDvb5l9hnTYaGvcL6RyKvupiLH0FJwfn62snC+k6LDqN/LWegy/5MOOzboOGBpZc1KXI1gae1peV4iyAt/aswPXTrWdtNDRQMKUL8QROsVmB8/N6HvJs1qChgWXPdSH+RfvYrMC5vAq75mGJzRo0NPAE5Cazq3AiTKfYrJCPnp6HZTZr0NDAgwuqTJxlswJnHWpWPGGzBg0NvAK3ywv997iyG/Ss3Kww/7F8PjugZ200NFDYTgrFB7hwr5hp3L5L+p34O1su18wZ1m3Q0JieS+1FyYYurcDnuItW0NCGksuqtBJDrNNGQ9uNxSCFok+q2MUm3poW1mmjoYayLlWeCNfPddal0VDrW2zYg8JnbFGEd/I9wbo0GjK44o+i+LtaxPzGS9/KOhgaRkH5NbWMGWePjULDKKVfTt6ohbb14WL5N2UcGsbBkja11HaOPSYODZNg0SO1WBTYbBIaJsEn4ggW/rSWb8ExNpuEhi6wMG89gUk244KGLvDdfxiLf8EWPqKH2IwLGrrCW/EYHrIzVzR0hRvOCXzbHWdnrmjoSm7R+FPQcxc0/J9oGCMN8uvYAWiC5hL5WTI5kxn2WIqGMWpAbrUByLLGEvlZMjlz/p+x53lV/wBbg8Mv83tyOgAAAABJRU5ErkJggg==";
+            var imgB =
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIzSURBVFhH5Za9j0xhFMaPWLNrfc1932t3NqIhG/FHUBAFEh8FUdBpRaUQJJrNE0SpolKJj0aynURCskJJWCQaoiYhiMV6zsyRmX3f17pz78xs4Zf8kpl7zn3OO3ful3TNOBqS46Q43KKPzZuS4QQds64+UMOI1HGBw77R+b/4hYuYEpkatr16RI6c4U+CYYs5I+uQ2d4VyVBj4KNgQBEfiJxZYSkVcDgfBHf6y0zV5nnkTltKSTbyMDp8ioIdnorHblmNYdnAc8NjL4/U80TfR5nAGksrgcPxIFB9JiOJUIc6ne3oa5njmHWUwOF6FOixx6oxDgejfoerVi2Bx8MoMMdKq8a0jsLCfod7Vi2Bb95kFgY2MGrVGL30wv7m1VAWh+kgTN1v1ZgMhxP9d61aAo+LUWCOVzyznXW00ZuVx5uo3+GSdZTAY1ciUH3NX3uIzwVvg49wW2q4LnifpZVgEkMMeReFFvfDoidtIRxOBaHdeNlSKrCcZ73D+yC4iJ/510xYSkUcjgbh/9bjnO3dC7CMgfeTg9K+bD4nesoYtjD4azAo5U8udrvt1WMczgbDYjNcse4+0Ho5eRENbftW1lZ5/BYhw47E4D8esK4+k+F2Yvi0VQeAxyQHfu8YPke3WnVA6ItGewHXbOsAqWMzB/+gc7xEN9nWAeNxhwu4Yd+WgBw76Tb7thTwFi2i/j+sovo6tp6O04apn3Wb1rSnb9So3mrrVId5Uz/rNq118RQU+Q2+t8OMe/UuOgAAAABJRU5ErkJggg==";
+            var aData = [
+                ["paris", 2.349014, 48.864716, "Paris", "#F24131", imgO],
+                ["montauban", 1.35296, 44.022125, "Montauban", "#F24131", imgO],
+                ["lemans", 0.209856, 48.008224, "Le Mans", "#9BA64A", imgG],
+                ["cannes", 7.017369, 43.552849, "Cannes", "#9E1C38", imgR],
+                ["laval", -0.766296, 48.101929, "Laval", "#9E1C38", imgR],
+                ["bordeaux", -0.580816, 44.836151, "Bordeaux", "#2D3E50", imgB],
+                ["mulhouse", 7.335888, 47.750839, "Mulhouse", "#2D3E50", imgB],
+            ];
+            var bgColor = "#eee";
+            var g1 = {
+                type: null,
+                backgroundColor: bgColor,
+                borderRight: "2px dotted #134E60",
+                plotarea: { margin: 15 },
+                height: "70%",
+                width: "43%",
+                x: "0%",
+                y: "0%",
+                title: { text: "Sample text", fontSize: 18, fontColor: "#134E60", fontWeight: "normal", align: "left", paddingLeft: 20 },
+                legend: {
+                    layout: "1x",
+                    margin: "auto auto 10 90",
+                    borderWidth: 0,
+                    backgroundColor: bgColor,
+                    item: { fontColor: "#fff", fontSize: 11, offsetX: -35, align: "center" },
+                    marker: { width: 72, height: 60, borderRadiusTopLeft: 10, borderRadiusBottomRight: 10 },
+                },
+                series: [
+                    { legendMarker: { backgroundColor: "#2D3E50" }, text: '<span style="font-size:16px;font-weight:bold;">87%</span><br>Sample<br>text.' },
+                    { legendMarker: { backgroundColor: "#F24131" }, text: '<span style="font-size:16px;font-weight:bold;">36%</span><br>Sample<br>text.' },
+                    { legendMarker: { backgroundColor: "#9E1C38" }, text: '<span style="font-size:16px;font-weight:bold;">24%</span><br>Sample<br>text.' },
+                    { legendMarker: { backgroundColor: "#9BA64A" }, text: '<span style="font-size:16px;font-weight:bold;">18%</span><br>Sample<br>text.' },
+                ],
+                shapes: [
+                    {
+                        type: "zingchart.maps",
+                        options: {
+                            name: "vnm",
+                            width: "90%",
+                            height: "90%",
+                            scale: true,
+                            zooming: false,
+                            panning: false,
+                            scrolling: false,
+                            style: { borderWidth: 1, borderColor: "#0073a3", borderAlpha: 0.1, backgroundColor: "#0084B4", controls: { visible: false }, label: { visible: false }, hoverState: { visible: false } },
+                        },
+                    },
+                ],
+                tooltip: { backgroundColor: "#fff", borderColor: "#333", borderRadius: 4, callout: true },
+            };
+            for (var i = 0; i < aData.length; i++) {
+                var info = aData[i];
+                g1.shapes.push({
+                    type: "circle",
+                    backgroundImage: info[5],
+                    backgroundRepeat: "no-repeat",
+                    size: 16,
+                    offsetY: -20,
+                    id: info[0],
+                    x: info[1] + "lon",
+                    y: info[2] + "lat",
+                    map: "vnm",
+                    cursor: "pointer",
+                    target: "_blank",
+                    tooltip: { backgroundColor: info[4], fontColor: "#FFF", text: info[3] },
+                });
+            }
+            var g2 = {
+                type: "line",
+                backgroundColor: bgColor,
+                height: "40%",
+                width: "40%",
+                x: "43%",
+                y: "0%",
+                plotarea: { margin: "60 20 80 120" },
+                title: { text: "Sample text", fontSize: 18, fontColor: "#134E60", fontWeight: "normal", align: "left", paddingLeft: 15 },
+                scaleX: { lineWidth: 0, minValue: 0, maxValue: 5, step: 1, item: { visible: false }, guide: { visible: false }, tick: { visible: false } },
+                scaleY: {
+                    lineWidth: 0,
+                    label: {
+                        text: '<span style="font-size:12px;">Sample text</span><br><br>This is a sample text.<br>Insert your desired<br>text here.<br><br>This is a sample text.<br>Insert your desired<br>text here.',
+                        fontColor: "#000",
+                        fontSize: "10px",
+                        fontWeight: "normal",
+                        textAlign: "left",
+                        fontAngle: 0,
+                        paddingLeft: 30,
+                    },
+                    item: { visible: false },
+                    guide: { lineColor: "#BFBFBF" },
+                    tick: { visible: false },
+                },
+                series: [
+                    {
+                        values: [
+                            [1, 10],
+                            [2, 10],
+                            [3, 28],
+                            [4, 17],
+                        ],
+                        lineColor: "#2A3C54",
+                        lineWidth: 3,
+                        marker: { borderColor: "#2A3C54", backgroundColor: "#2A3C54" },
+                    },
+                    {
+                        values: [
+                            [1, 12],
+                            [2, 22],
+                            [3, 9],
+                            [4, 14],
+                        ],
+                        lineColor: "#A3193A",
+                        lineWidth: 3,
+                        marker: { borderColor: "#A3193A", backgroundColor: "#A3193A" },
+                    },
+                    {
+                        values: [
+                            [1, 22],
+                            [2, 16],
+                            [3, 17],
+                            [4, 23],
+                        ],
+                        lineColor: "#FA4437",
+                        lineWidth: 3,
+                        marker: { borderColor: "#FA4437", backgroundColor: "#FA4437" },
+                    },
+                ],
+            };
+            var g3 = {
+                type: "bar",
+                backgroundColor: bgColor,
+                plotarea: { margin: "60 0 35 0" },
+                height: "35%",
+                width: "40%",
+                x: "43%",
+                y: "35%",
+                title: { text: "Sample text", fontSize: 18, fontColor: "#134E60", fontWeight: "normal", align: "left", paddingLeft: 15 },
+                subtitle: { text: "This is a sample text.<br>Insert your desired text here.", fontSize: 12, fontColor: "#000", fontWeight: "normal", align: "left", paddingLeft: 15 },
+                plot: { barWidth: "95%" },
+                legend: { width: "93%", align: "left", margin: "4 0 5 22", padding: 2, verticalAlign: "bottom", backgroundColor: bgColor, borderWidth: 0, layout: "x4", marker: { size: 10 } },
+                scaleX: { lineWidth: 0, item: { visible: false }, guide: { visible: false }, tick: { visible: false } },
+                scaleY: { minValue: 0, maxValue: 10, step: 1, lineWidth: 0, item: { visible: false }, guide: { visible: false }, tick: { visible: false } },
+                series: [
+                    { values: [6], backgroundColor: "#F24131", text: "Text" },
+                    { values: [9], backgroundColor: "#9E1C38", text: "Text" },
+                    { values: [7], backgroundColor: "#2D3E50", text: "Text" },
+                    { values: [10], backgroundColor: "#9BA64A", text: "Text" },
+                ],
+            };
+            var g4 = {
+                type: "bar",
+                backgroundColor: bgColor,
+                borderLeft: "2px dotted #134E60",
+                plotarea: { margin: "120 20 30 50" },
+                height: "70%",
+                width: "17%",
+                x: "83%",
+                y: "0%",
+                title: { text: "Sample text", fontSize: 18, fontColor: "#134E60", fontWeight: "normal", align: "left", paddingLeft: 10 },
+                subtitle: { text: "This is a sample text.<br>Insert your desired text here.", fontSize: 10, fontColor: "#000", fontWeight: "normal", align: "left", paddingLeft: 10, marginTop: 40 },
+                plot: { stacked: true, barWidth: "70%" },
+                scaleX: { lineWidth: 0, item: { visible: false }, guide: { visible: false }, tick: { visible: false } },
+                scaleY: { minValue: 0, maxValue: 100, step: 10, format: "%scale-value%", lineWidth: 0, item: { fontColor: "#000", fontSize: 12 }, guide: { lineColor: "#BFBFBF" }, tick: { visible: false } },
+                series: [
+                    { values: [32, 18, 33, 31], backgroundColor: "#F24131" },
+                    { values: [18, 32, 17, 19], backgroundColor: "#9E1C38" },
+                    { values: [32, 18, 33, 31], backgroundColor: "#2D3E50" },
+                    { values: [18, 32, 17, 19], backgroundColor: "#9BA64A" },
+                ],
+            };
+            var g5 = {
+                type: "ring",
+                backgroundColor: bgColor,
+                borderTop: "4px solid #134E60",
+                height: "40%",
+                width: "20%",
+                x: "0%",
+                y: "70.2%",
+                plotarea: { margin: "0 15 100 15" },
+                source: { text: "This is a sample text.<br>Insert your desired text<br>here.", fontColor: "#000", fontSize: 10, fontWeight: "normal", textAlign: "center", marginTop: 150 },
+                tooltip: { text: "%node-percent-value%" },
+                scale: { sizeFactor: 0.75 },
+                scaleR: { refAngle: 270 },
+                plot: { borderWidth: 0, slice: "50%", valueBox: { visible: false } },
+                series: [
+                    { values: [25], backgroundColor: "#F24131" },
+                    { values: [75], backgroundColor: "#BFBFBF" },
+                ],
+            };
+            var g6 = {
+                type: "ring",
+                backgroundColor: bgColor,
+                borderTop: "4px solid #134E60",
+                height: "40%",
+                width: "20%",
+                x: "20%",
+                y: "70.2%",
+                plotarea: { margin: "0 15 100 15" },
+                source: { text: "This is a sample text.<br>Insert your desired text<br>here.", fontColor: "#000", fontSize: 10, fontWeight: "normal", textAlign: "center", marginTop: 150 },
+                tooltip: { text: "%node-percent-value%" },
+                scale: { sizeFactor: 0.75 },
+                scaleR: { refAngle: 270 },
+                plot: { borderWidth: 0, slice: "50%", valueBox: { visible: false } },
+                series: [
+                    { values: [35], backgroundColor: "#9E1C38" },
+                    { values: [65], backgroundColor: "#BFBFBF" },
+                ],
+            };
+            var g7 = {
+                type: "ring",
+                backgroundColor: bgColor,
+                borderTop: "4px solid #134E60",
+                height: "40%",
+                width: "20%",
+                x: "40%",
+                y: "70.2%",
+                plotarea: { margin: "0 15 100 15" },
+                source: { text: "This is a sample text.<br>Insert your desired text<br>here.", fontColor: "#000", fontSize: 10, fontWeight: "normal", textAlign: "center", marginTop: 150 },
+                tooltip: { text: "%node-percent-value%" },
+                scale: { sizeFactor: 0.75 },
+                scaleR: { refAngle: 270 },
+                plot: { borderWidth: 0, slice: "50%", valueBox: { visible: false } },
+                series: [
+                    { values: [65], backgroundColor: "#2D3E50" },
+                    { values: [35], backgroundColor: "#BFBFBF" },
+                ],
+            };
+            var g8 = {
+                type: "ring",
+                backgroundColor: bgColor,
+                borderTop: "4px solid #134E60",
+                height: "40%",
+                width: "20%",
+                x: "60%",
+                y: "70.2%",
+                plotarea: { margin: "0 15 100 15" },
+                source: { text: "This is a sample text.<br>Insert your desired text<br>here.", fontColor: "#000", fontSize: 10, fontWeight: "normal", textAlign: "center", marginTop: 150 },
+                tooltip: { text: "%node-percent-value%" },
+                scale: { sizeFactor: 0.75 },
+                scaleR: { refAngle: 270 },
+                plot: { borderWidth: 0, slice: "50%", valueBox: { visible: false } },
+                series: [
+                    { values: [70], backgroundColor: "#9BA64A" },
+                    { values: [30], backgroundColor: "#BFBFBF" },
+                ],
+            };
+            var g9 = {
+                type: null,
+                backgroundColor: bgColor,
+                borderTop: "4px solid #134E60",
+                height: "50%",
+                width: "20%",
+                x: "80%",
+                y: "70.2%",
+                plotarea: { margin: "10 0 0 0" },
+                labels: [
+                    { text: "Sample text", fontColor: "#000", fontSize: 11, x: 20, y: 40 },
+                    { text: "This is a sample text.<br>Insert your desire text<br>here.", fontColor: "#000", fontSize: 9, align: "left", x: 20, y: 60 },
+                    {
+                        text: "\u25CF Insert your desired text here.<br>\u25CF Insert your desired text here.<br>\u25CF Insert your desired text here.<br>\u25CF Insert your desired text here.",
+                        fontColor: "#000",
+                        fontSize: 9,
+                        align: "left",
+                        x: 20,
+                        y: 110,
+                    },
+                ],
+            };
+            var chartJSON = { graphset: [g1, g2, g3, g4, g5, g6, g7, g8, g9] };
+            zingchart.loadModules("maps,maps-vnm", function () {
+                zingchart.render({ id: "myChart", width: "100%", height: "100%", output: "svg", data: chartJSON });
+            });
+        </script>
+    </body>
+</html>

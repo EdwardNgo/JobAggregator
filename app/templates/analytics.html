@@ -30,7 +30,65 @@
 <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/mapdata/countries/vn/vn-all.js"></script>
+<div class="row" style="margin-top:10px; margin-left:15px;margin-bottom:10px;">
+  <div class="col-sm-6 col-lg-4">
+    <div class="card" style="max-width: 18rem;">
+      <div class="card-header bg-vk content-center">
+        <i class="fab fa-vk icon text-white my-4 display-4"></i>
+      </div>
+      <div class="card-body row text-center">
+        <div class="col">
+          <div class="text-value-xl">9k+</div>
+          <div class="text-uppercase text-muted small">Site_Jobs</div>
+        </div>
+        <div class="vr"></div>
+        <div class="col">
+          <div class="text-value-xl">5k+</div>
+          <div class="text-uppercase text-muted small">Facebook recruitment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-4">
+    <div class="card" style="max-width: 18rem;">
+      <div class="card-header bg-xing content-center">
+        <i class="fab fa-xing icon text-white my-4 display-4"></i>
+      </div>
+      <div class="card-body row text-center">
+        <div class="col">
+          <div class="text-value-xl">4</div>
+          <div class="text-uppercase text-muted small">sites</div>
+        </div>
+        <div class="vr"></div>
+        <div class="col">
+          <div class="text-value-xl">4 </div>
+          <div class="text-uppercase text-muted small">groups</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-4">
+    <div class="card" style="max-width: 18rem;">
+      <div class="card-header bg-yahoo content-center">
+        <i class="fab fa-yahoo icon text-white my-4 display-4"></i>
+      </div>
+      <div class="card-body row text-center">
+        <div class="col">
+          <div class="text-value-xl">10+</div>
+          <div class="text-uppercase text-muted small">Plot</div>
+        </div>
+        <div class="vr"></div>
+        <div class="col">
+          <div class="text-value-xl">1000</div>
+          <div class="text-uppercase text-muted small">feeds</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  </div>
    <div class = "card" style  = "margin-top:10px; margin-left:15px;margin-bottom:10px;margin-right:15px;">
+   
       <canvas id="users2" width="150" height="50"></canvas>
       <script>
          var ctxUsers = document.getElementById('users2').getContext('2d');
@@ -80,7 +138,7 @@
              data: {
                  labels: [{% for i in dailyRecruitmentLabel%}'{{i}}',{% endfor %}],
                  datasets: [{
-                     label: 'Daily Recruitment in 4-2021',
+                     label: 'Daily Recruitment',
                      data: [{% for i in dailyRecruitmentValue%}{{i}},{% endfor %}],
                      backgroundColor: ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgba(63, 191, 127, 1)','rgba(50, 91, 127, 1)'],
                      borderColor: 'rgba(63, 191, 127, 1)',
@@ -101,7 +159,7 @@
                  labels: [{% for i in topTitleLabel%}'{{i}}',{% endfor %}],
                  datasets: [{
                      axis:'y',
-                     label: 'Top 10 Company with highest recruitment 4-2021',
+                     label: 'Top 10 title with highest recruitment',
                      data: [{% for i in topTitleValue%}{{i}},{% endfor %}],
                      backgroundColor: 'rgba(40, 255, 120, 0.2)',
                      borderColor: 'rgba(63, 191, 127, 1)',
@@ -118,7 +176,7 @@
       // Prepare demo data
       // Data is joined to map using value of 'hc-key' property by default.
       // See API docs for 'joinBy' for more info on linking data and map.
-      var data = [
+      var data1 = [
       ['vn-3655', 0],
       ['vn-qn', 1],
       ['vn-kh', 2],
@@ -184,7 +242,12 @@
       ['vn-bi', 62],
       ['vn-333', 63]
       ];
-      
+      var data = [
+      ['vn-hc', 6],
+      ['vn-318', 18],
+      ['vn-da', 50],
+      ['vn-bi', 62],
+      ];
       // Create the chart
       Highcharts.mapChart('map', {
       chart: {
