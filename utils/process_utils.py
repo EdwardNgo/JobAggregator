@@ -1,7 +1,16 @@
 import re
 from datetime import datetime,timedelta
 import random
-
+import json
+vn_mapper = {"Hà Nội":"HN",
+            "Tp Hồ Chí Minh":"HC",
+            "Lâm Đồng":"LD",
+            "Hà Nam":"HM",
+            "Thừa Thiên Huế":"TT",
+            "Bắc Ninh":"BN",
+            "Quảng Bình":"QB",
+            "Bình Dương":"BI",
+            "Đà Nẵng":"DA"}
 def timeTransform(str):
     try:
         value = int(re.search('\d+',str).group())
@@ -66,14 +75,34 @@ def removeHtmlTag(text):
     text = re.sub("\.+",'.',text)
     return text.replace(':.','.')
 
-if __name__ == '__main__':
-    print(timeTransform('Cập nhật 2 tuần trước'))
-    print(timeTransform('14h'))
-    print(secondToDate('1614388687'))
-    print(textNormalize('\r\n                    Senior Product Manager\r\n                                                                            '))
-    print(textNormalize("Chuyên viên Phát triển Ứng dụng\r\n                                         (Mới)"))
-    print(titleNormalize('nhân viên Tester'))
-    print(removeHtmlTag("""<div class="job-details__paragraph">
-<p><p>As a key member of the team, you’ll have a say in which employee perks we should provide you.</p><p><strong>REMUNERATION:</strong></p><ul><li>Competitive salary and excellent benefits</li><li>Bonus: performance and loyalty bonuses, team bonus, annual bonus (13th-month salary)</li><li>Salary review based on performance (every 3-6 months)</li></ul><p><strong>PERKS AND BENEFITS:</strong></p><ul><li>A cool and modern co-working space</li><li>Laptop + 2nd monitor</li><li><strong>Flexible working hours</strong></li><li><strong>5</strong> workdays/week, <strong>15</strong> paid vacation days/year</li><li>Parking allowance, unlimited snacks, and drinks</li><li>Bao Viet Healthcare insurance</li><li>Social insurance, medical insurance, unemployment insurance according to Vietnam Labor Law</li></ul><p><strong>DEVELOPMENT OPPORTUNITIES:</strong></p><ul><li>There’s <strong>unlimited potential for career growth</strong></li><li>Work in a vibrant and energetic space with startups and talented pros</li><li>Work for an international company with the <strong>potential for travel to Australia</strong></li></ul><p><strong>RECREATIONAL ACTIVITIES:</strong></p><ul><li>Annual company trip</li><li>Regular team building activities</li><li>Happy Fridays with discretional food and games</li></ul></p>
-</div>"""))
+def cityToMapData(json_data):
+    res = {"j":{}}
+    for key in vn_mapper.values():
+        res[key] = {}
+        res[key]["data"] = [0]*12
+    for data in json_data:
+        if(vn_mapper.get(data["_id"]["city"]) and "2021" in data["_id"]["month_year"]):
+            # print(data)
+            key = vn_mapper[data["_id"]["city"]]
+            # res[key][data["_id"]["month_year"]] = data["job_count"]
+            month = int(data["_id"]["month_year"].split("-")[0])
+            res[key]["name"] = data["_id"]["city"]
+            res[key]["data"][month-1] = data["job_count"]
+            
+            # print(key)
     
+    print(res)
+    return res
+if __name__ == '__main__':
+#     print(timeTransform('Cập nhật 2 tuần trước'))
+#     print(timeTransform('14h'))
+#     print(secondToDate('1614388687'))
+#     print(textNormalize('\r\n                    Senior Product Manager\r\n                                                                            '))
+#     print(textNormalize("Chuyên viên Phát triển Ứng dụng\r\n                                         (Mới)"))
+#     print(titleNormalize('nhân viên Tester'))
+#     print(removeHtmlTag("""<div class="job-details__paragraph">
+# <p><p>As a key member of the team, you’ll have a say in which employee perks we should provide you.</p><p><strong>REMUNERATION:</strong></p><ul><li>Competitive salary and excellent benefits</li><li>Bonus: performance and loyalty bonuses, team bonus, annual bonus (13th-month salary)</li><li>Salary review based on performance (every 3-6 months)</li></ul><p><strong>PERKS AND BENEFITS:</strong></p><ul><li>A cool and modern co-working space</li><li>Laptop + 2nd monitor</li><li><strong>Flexible working hours</strong></li><li><strong>5</strong> workdays/week, <strong>15</strong> paid vacation days/year</li><li>Parking allowance, unlimited snacks, and drinks</li><li>Bao Viet Healthcare insurance</li><li>Social insurance, medical insurance, unemployment insurance according to Vietnam Labor Law</li></ul><p><strong>DEVELOPMENT OPPORTUNITIES:</strong></p><ul><li>There’s <strong>unlimited potential for career growth</strong></li><li>Work in a vibrant and energetic space with startups and talented pros</li><li>Work for an international company with the <strong>potential for travel to Australia</strong></li></ul><p><strong>RECREATIONAL ACTIVITIES:</strong></p><ul><li>Annual company trip</li><li>Regular team building activities</li><li>Happy Fridays with discretional food and games</li></ul></p>
+# </div>"""))
+    with open("test.json","r") as f:
+        json_data = json.load(f)
+    cityToMapData(json_data)

@@ -1,0 +1,1353 @@
+[
+    {
+        "_id": {
+            "city": "Thái Bình",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Khánh Hoà",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quảng Nam",
+            "month_year": "5-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Bình Dương",
+            "month_year": "3-2021"
+        },
+        "job_count": 5
+    },
+    {
+        "_id": {
+            "city": "Kiên Giang",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh",
+            "month_year": "4-2021"
+        },
+        "job_count": 92
+    },
+    {
+        "_id": {
+            "city": "Khác",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Quận 12, Hóc Môn",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hoàng Mai",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Nghệ An",
+            "month_year": "5-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Đồng Nai, Thanh Hoá",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quận 7",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Dak Lak",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Thái Nguyên",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội",
+            "month_year": "2-2021"
+        },
+        "job_count": 104
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh",
+            "month_year": "2-2021"
+        },
+        "job_count": 12
+    },
+    {
+        "_id": {
+            "city": "Thanh Hóa",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Thanh Hoá",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Tp Hồ Chí Minh",
+            "month_year": "1-2021"
+        },
+        "job_count": 8
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Đà Nẵng, Đống Đa, Tân Bình",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Gò Vấp",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Đà Nẵng",
+            "month_year": "4-2021"
+        },
+        "job_count": 12
+    },
+    {
+        "_id": {
+            "city": "Thanh Khê, Hà Nội, Hồ Chí Minh, Đà Nẵng",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bắc Giang, Hà Nam, Miền Trung, Quảng Ninh, Thái Nguyên",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Hải Dương",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Phú Yên",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Thừa Thiên Huế",
+            "month_year": "4-2021"
+        },
+        "job_count": 11
+    },
+    {
+        "_id": {
+            "city": "Bình Định, Quảng Ngãi",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Đà Nẵng, Thừa Thiên Huế",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hồ Chí Minh, Hà Nội",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hải Phòng",
+            "month_year": "3-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Quận 7",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Phú Nhuận",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Cầu Giấy",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "TP Nha Trang",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bến Tre, Cần Thơ",
+            "month_year": "2-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Nghệ An",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Bình Dương, Bắc Ninh, Hải Phòng, Lâm Đồng, Nam Định, Nghệ An, Quảng Ninh, Thái Nguyên, Vĩnh Phúc, Quận 11, Hồ Chí Minh",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hoàng Mai",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Đống Đa, Quận 4",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Ba Đình, Cầu Giấy, Thanh Xuân, Hà Đông",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Thanh Xuân",
+            "month_year": "4-2021"
+        },
+        "job_count": 7
+    },
+    {
+        "_id": {
+            "city": "Quận 3",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quảng Bình",
+            "month_year": "4-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Bình Định, Miền Nam",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bắc Ninh",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Thừa Thiên Huế",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nam",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Tp Hồ Chí Minh",
+            "month_year": "3-2021"
+        },
+        "job_count": 404
+    },
+    {
+        "_id": {
+            "city": "Đống Đa",
+            "month_year": "4-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Lâm Đồng",
+            "month_year": "2-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bà Rịa - Vũng Tàu",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "",
+            "month_year": "3-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh",
+            "month_year": "5-2021"
+        },
+        "job_count": 5
+    },
+    {
+        "_id": {
+            "city": "Tiền Giang",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Others",
+            "month_year": "5-2021"
+        },
+        "job_count": 7
+    },
+    {
+        "_id": {
+            "city": "Hà Nội",
+            "month_year": "5-2021"
+        },
+        "job_count": 439
+    },
+    {
+        "_id": {
+            "city": "Bắc Ninh, Đà Nẵng, Hải Phòng, Bắc Giang, Hà Nam, Hà Tĩnh, Miền Bắc, Miền Nam, Miền Trung, Nam Định, Nghệ An, Phú Thọ, Quảng Ninh, Thái Bình, Thái Nguyên, Thanh Hoá",
+            "month_year": "3-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Bình Thuận",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "KV Bắc Trung Bộ",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh",
+            "month_year": "1-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Others",
+            "month_year": "3-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Hưng Yên, Hải Dương",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Kuala Lumpur",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Nước Ngoài",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Đồng Nai",
+            "month_year": "5-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Nghệ An",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Đà Nẵng",
+            "month_year": "4-2021"
+        },
+        "job_count": 144
+    },
+    {
+        "_id": {
+            "city": "Bình Phước",
+            "month_year": "4-2021"
+        },
+        "job_count": 5
+    },
+    {
+        "_id": {
+            "city": "Đống Đa",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bình Thạnh",
+            "month_year": "4-2021"
+        },
+        "job_count": 7
+    },
+    {
+        "_id": {
+            "city": "Hà Đông",
+            "month_year": "3-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Đà Nẵng",
+            "month_year": "2-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "An Giang",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Quận 5",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quảng Ninh",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Đồng Nai",
+            "month_year": "4-2021"
+        },
+        "job_count": 33
+    },
+    {
+        "_id": {
+            "city": "",
+            "month_year": "4-2021"
+        },
+        "job_count": 12
+    },
+    {
+        "_id": {
+            "city": "Bến Tre, Tiền Giang",
+            "month_year": "12-2020"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Kiên Giang",
+            "month_year": "5-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Bình Dương, Quận 6",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "",
+            "month_year": "5-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Bình Dương",
+            "month_year": "2-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bình Định",
+            "month_year": "3-2021"
+        },
+        "job_count": 5
+    },
+    {
+        "_id": {
+            "city": "Hà Nội",
+            "month_year": "12-2020"
+        },
+        "job_count": 6
+    },
+    {
+        "_id": {
+            "city": "Hà Nam",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quảng Bình",
+            "month_year": "5-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Đan Phượng",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bắc Ninh",
+            "month_year": "4-2021"
+        },
+        "job_count": 6
+    },
+    {
+        "_id": {
+            "city": "Hưng Yên",
+            "month_year": "4-2021"
+        },
+        "job_count": 9
+    },
+    {
+        "_id": {
+            "city": "Nghệ An",
+            "month_year": "2-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Gò Vấp",
+            "month_year": "5-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Quận 10",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Tây Hồ",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Cầu Giấy",
+            "month_year": "4-2021"
+        },
+        "job_count": 12
+    },
+    {
+        "_id": {
+            "city": "Quận 1",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bà Rịa-Vũng Tàu",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Bình Định",
+            "month_year": "4-2021"
+        },
+        "job_count": 24
+    },
+    {
+        "_id": {
+            "city": "Đồng Nai",
+            "month_year": "3-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Tp Hồ Chí Minh",
+            "month_year": "12-2020"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Tân Bình",
+            "month_year": "4-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Bình Dương, Cà Mau, Đồng Tháp, Sơn La, Tây Ninh, Tiền Giang",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quảng Ngãi",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Tp Hồ Chí Minh",
+            "month_year": "2-2021"
+        },
+        "job_count": 48
+    },
+    {
+        "_id": {
+            "city": "Thừa Thiên- Huế",
+            "month_year": "3-2021"
+        },
+        "job_count": 6
+    },
+    {
+        "_id": {
+            "city": "Tp Hồ Chí Minh",
+            "month_year": "5-2021"
+        },
+        "job_count": 858
+    },
+    {
+        "_id": {
+            "city": "Thừa Thiên- Huế",
+            "month_year": "4-2021"
+        },
+        "job_count": 7
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh",
+            "month_year": "12-2020"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Tuyên Quang",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Thanh Hoá, Ba Đình, Cầu Giấy",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quận 1, Quận 2, Quận 3, Quận 4, Quận 5, Quận 6, Quận 7, Quận 8, Quận 9, Quận 10, Quận 11, Quận 12, Thủ Đức, Gò Vấp, Bình Thạnh, Tân Bình, Tân Phú, Phú Nhuận, Bình Tân, Củ Chi, Hóc Môn, Bình Chánh, Nhà Bè, Cần Giờ",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quảng Nam",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Đồng Tháp",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Ninh Thuận",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Đông",
+            "month_year": "4-2021"
+        },
+        "job_count": 6
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Đống Đa, Quận 1, Quận 3",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Lào Cai",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Đống Đa, Từ Liêm",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hải Châu",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Bình Dương, Đồng Nai, Bến Tre, Cần Thơ",
+            "month_year": "2-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Tây Ninh",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quảng Ninh",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Tp Hồ Chí Minh",
+            "month_year": "4-2021"
+        },
+        "job_count": 2822
+    },
+    {
+        "_id": {
+            "city": "Hà Nội",
+            "month_year": "11-2020"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Ninh Bình",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bắc Ninh",
+            "month_year": "3-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Thủ Đức",
+            "month_year": "4-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Thanh Xuân",
+            "month_year": "3-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Từ Liêm",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Quận 7",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bình Dương, Đồng Nai, Bà Rịa-Vũng Tàu",
+            "month_year": "2-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bà Rịa - Vũng Tàu",
+            "month_year": "4-2021"
+        },
+        "job_count": 8
+    },
+    {
+        "_id": {
+            "city": "Đà Nẵng",
+            "month_year": "3-2021"
+        },
+        "job_count": 23
+    },
+    {
+        "_id": {
+            "city": "Kiên Giang, Quận 1",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Ba Đình",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Bình Dương",
+            "month_year": "5-2021"
+        },
+        "job_count": 8
+    },
+    {
+        "_id": {
+            "city": "Ba Đình",
+            "month_year": "2-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Bình Dương, Hải Phòng, Quảng Ninh",
+            "month_year": "2-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hai Bà Trưng",
+            "month_year": "4-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Tây Ninh",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Bình Dương",
+            "month_year": "4-2021"
+        },
+        "job_count": 54
+    },
+    {
+        "_id": {
+            "city": "Phú Nhuận",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quận 3",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quận 11",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Quận 1",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Đà Nẵng",
+            "month_year": "5-2021"
+        },
+        "job_count": 24
+    },
+    {
+        "_id": {
+            "city": "Đắk Lắk",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hải Dương",
+            "month_year": "4-2021"
+        },
+        "job_count": 8
+    },
+    {
+        "_id": {
+            "city": "Hà Nội",
+            "month_year": "1-2021"
+        },
+        "job_count": 22
+    },
+    {
+        "_id": {
+            "city": "Hà Nội",
+            "month_year": "3-2021"
+        },
+        "job_count": 552
+    },
+    {
+        "_id": {
+            "city": "Quảng Trị",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Quận 12",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội",
+            "month_year": "4-2021"
+        },
+        "job_count": 3075
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Đà Nẵng",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Khánh Hòa",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Kon Tum",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Kiên Giang",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Phnompenh",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Thủ Đức",
+            "month_year": "3-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Quảng Ninh",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Thanh Hoá",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Others",
+            "month_year": "4-2021"
+        },
+        "job_count": 12
+    },
+    {
+        "_id": {
+            "city": "Hà Nam",
+            "month_year": "4-2021"
+        },
+        "job_count": 6
+    },
+    {
+        "_id": {
+            "city": "Khác",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh",
+            "month_year": "3-2021"
+        },
+        "job_count": 7
+    },
+    {
+        "_id": {
+            "city": "Hải Dương",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Thái Bình",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Ba Đình, Cầu Giấy, Thanh Xuân",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Đắc Lắc, Gia Lai, Kon Tum",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Phú Thọ",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Tp Hồ Chí Minh",
+            "month_year": "11-2020"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Long An",
+            "month_year": "5-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Vĩnh Long",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Vĩnh Phúc",
+            "month_year": "4-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Sóc Trăng",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Nam Định",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Bắc Giang",
+            "month_year": "4-2021"
+        },
+        "job_count": 4
+    },
+    {
+        "_id": {
+            "city": "Đà Nẵng, TP Nha Trang",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hòa Bình",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Ninh Bình",
+            "month_year": "4-2021"
+        },
+        "job_count": 3
+    },
+    {
+        "_id": {
+            "city": "Long An",
+            "month_year": "4-2021"
+        },
+        "job_count": 7
+    },
+    {
+        "_id": {
+            "city": "Bến Tre",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Gia Lâm",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hai Bà Trưng",
+            "month_year": "3-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Hải Phòng",
+            "month_year": "4-2021"
+        },
+        "job_count": 20
+    },
+    {
+        "_id": {
+            "city": "Bà Rịa-Vũng Tàu",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Hà Nội, Hồ Chí Minh, Bình Dương, Hải Phòng, Quảng Ninh",
+            "month_year": "5-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Cao Bằng",
+            "month_year": "4-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Lâm Đồng",
+            "month_year": "4-2021"
+        },
+        "job_count": 8
+    },
+    {
+        "_id": {
+            "city": "Quận 1, Quận 3",
+            "month_year": "4-2021"
+        },
+        "job_count": 2
+    },
+    {
+        "_id": {
+            "city": "Thái Nguyên",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "An Giang",
+            "month_year": "3-2021"
+        },
+        "job_count": 1
+    },
+    {
+        "_id": {
+            "city": "Cần Thơ",
+            "month_year": "4-2021"
+        },
+        "job_count": 5
+    }
+]
