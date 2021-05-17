@@ -32,14 +32,11 @@ class ApiCrawler:
         res = retryRequest(url)
         data = res.json()
         print(data)
-        fbjobdata = data['feed']['data']
-        fbjobdata['published'] = fbjobdata['updated_time']
-        print(data)
-        insertdb.insertJobData(data['feed']['data'],'fb_news')
-        # fbnews = {group_id:{}}
-        # fbnews[group_id] = data['data']
-        # print(type(fbnews))
-        # news.insertJobData([fbnews],'fb_news')
+        # fbjobdata = data['feed']['data']
+        # fbjobdata['published'] = fbjobdata['updated_time']
+        # print(fbjobdata)
+        insertdb.insertJobData(data['feed']['data'],'fb_job')
+
 
     def saveNewsToCache(self,group_id,limit):
         fields = "/feed?fields=message,updated_time,full_picture&limit={limit}&access_token={access_token}".format(limit = limit,access_token = self.access_token)
@@ -123,14 +120,12 @@ if __name__ == "__main__":
         print(access_token)
         if (access_token.startswith('EAA')):
             # print(access_token)
-            groups = ['30580654243953',
-                    '174764463261090',
-                    '2028704957422810','130580654243953']
+            groups = ['174764463261090','2028704957422810','130580654243953']
             # groups = ['929563144068596']
             test =ApiCrawler(access_token,'https://graph.facebook.com/v10.0/')
             for group in groups:
                 # try:
-                test.saveNewsToCache(group,10)
+                test.getGroupPosts(group,900)
                 # except Exception as e:
                 #     print(e)
         else:
