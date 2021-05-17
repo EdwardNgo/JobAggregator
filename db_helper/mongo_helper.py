@@ -6,6 +6,9 @@ mydb = myclient["JobAggregator"]
 from datetime import datetime
 from bson.json_util import dumps
 from bson.objectid import ObjectId
+import json
+
+client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
 
 class Job(object):
     def __init__(self,client = MongoClient("mongodb://localhost:27017/") ,db = MongoClient("mongodb://localhost:27017/")["Job_Aggregator"]):
@@ -43,7 +46,7 @@ class Job(object):
 
 #xoa ban ghi trung lap
 def siteDup(collection_name):
-    client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
+
     result = client['Job_Aggregator'][collection_name].aggregate([
         {
             '$group': {
@@ -71,6 +74,21 @@ def siteDup(collection_name):
         print(i)
         print(i['dups'][1:])
         client['Job_Aggregator'][collection_name].delete_many({"_id":{"$in": i['dups'][1:]}})#xoa tru mot ban ghi trong dup
+
+def getRegionJobCount(collection_name):
+    pipeline = [{"$group":
+                        {"_id":
+                            {"city":"$city","month_year":"$month_year"},
+                            "job_count":{"$sum":1}
+                        }
+                }]
+    result = client['Job_Aggregator'][collection_name].aggregate(pipeline)
+    list_cur = list(result)
+    json_data = dumps(list_cur)
+    # # with open("test.json", "w") as f:
+    # #     json.dump(json.loads(json_data), f,ensure_ascii = False,indent  = 4)
+    json_data = json.loads(json_data)
+    return json_data
 
 def simpleAnalyse(collection_name,field,top=5):
     client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
@@ -139,5 +157,6 @@ if __name__ == '__main__':
     # jobinsert = Job()
     # # jobinsert.insertJobData([{'a':1},{'b':2}],'fb_job')
     # jobinsert.removeDuplicateData('site_job')
-    print(simpleAnalyse('raw_site_job','company'))
-    print(recruitmentByDay('raw_site_job','4-2021'))
+    # print(simpleAnalyse('raw_site_job','company'))
+    # print(recruitmentByDay('raw_site_job','4-2021'))
+    print(getRegionJobCount("new_raw_site_job"))
