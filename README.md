@@ -12,3 +12,6 @@ Gõ lệnh:
 ## . Run init.sh
 ```source init.sh
 ```
+## . Crawl data 
+```python main.py
+```
