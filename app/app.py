@@ -8,8 +8,11 @@ from db_helper import *
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 import re
+from utils import *
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 job = Job()
 
 def get_job(data,offset = 0,per_page = 25):
@@ -90,23 +93,9 @@ def fb():
                            per_page=per_page,
                            pagination=pagination,
                            )
-# @app.route('/analytics',methods=['GET', 'POST'])
-# def analytics():
-#     topCompany = simpleAnalyse('raw_site_job','company')
-#     topRegion = simpleAnalyse('raw_site_job','location')
-#     topTitle = simpleAnalyse('raw_site_job','title')
-#     print(topCompany)
-#     return render_template('analytics.html',topCompany=topCompany)
 
 @app.route('/analytics',methods = ['GET', 'POST'])
 def analytics():
-
-    
-    # getKPIUsers = {
-    #         'totalUsers': 200,
-    #         'recent24hUsers': 24,
-    #         'recentWeekusers': 48
-    # }
 
     #phan tich cong ty tuyen nhieu nhat den hien tai
     topCompany = simpleAnalyse('new_raw_site_job','company',top = 10)
@@ -152,5 +141,11 @@ def jobById(id):
 @app.route('/map',methods=['GET'])
 def map():
     return render_template("map.html")
+
+@app.route("/region-job",methods=['GET'])
+def regionJob():
+    json_data = getRegionJobCount("new_raw_site_job")
+    resp = cityToMapData(json_data)
+    return resp
 if __name__ == '__main__':
     app.run(debug=True)
