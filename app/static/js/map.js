@@ -1,11 +1,21 @@
-let data = [
-    ['Ha Noi', 9, 48.5, 45.7, 38.3, 14.1, 'HN'],
-    ['Ho Chi Minh City', 12, 49, 49.4, 35.0, 11.3, 'HC'],
-    ['Da Nang City', 13.24, 52.5, 4.2, 18.3, 70.3, 'DA'],
-    ['Binh Duong', 14, 51.8, 49.4, 35.4, 9.2, 'BI'],
-  ];
-  
-  // better placement to avoid pie overlap
+
+// let data = [{'id':'HN','name':'Ha Noi','data':[10,500,20,193,21,22,32]},
+//             {'id':'HC','name':'Ho Chi Minh City','data':[10,4000,20,193,21,22,32]},
+//             {'id':'DA','name':'Da Nang City','data':[10,300,20,193,21,22,32]},
+//             {'id':'BI','name':'Binh Duong','data':[10,200,20,193,21,22,32]}];
+let data = {'HN':{'name':'Ha Noi','data':[1000,200,300]},
+            'HC':{'name':'Ho Chi Minh City','data':[1000,0,200,300]},
+            'DA':{'name':'Da Nang City','data':[2000,2001,300]},
+            'BI':{'name':'Binh Duong','data':[1500,200,300]}}
+// A URL returns JSON data.
+var url = "http://localhost:5000/region-job";
+ 
+// let obj = fetch(url).then(function(response) {
+//   return response.json();
+// });
+async function fetchMoviesJSON() {
+  const response = await fetch(url);
+  const data = await response.json();
   let oOffsets = {
     RP: [15, -15]
   };
@@ -16,10 +26,8 @@ let data = [
   
   let getNameById = function (sId) {
     let sName = 'N/A';
-    for (let i = 0; i < data.length; i++) {
-      if (sId === data[i][6]) {
-        sName = data[i][0];
-      }
+    if (data[sId]){
+      sName = data[sId]['name'];
     }
     return sName;
   };
@@ -35,34 +43,46 @@ let data = [
       [],
       []
     ];
-    for (let i = 0; i < data.length; i++) {
-      let v0 = _r_(5, 15);
-      let v1 = _r_(25, 35);
-      let v3 = _r_(5, 10);
-      let v2 = 100 - v0 - v1 - v3;
-      aValues[0].push(v0);
-      aValues[1].push(v1);
-      aValues[2].push(v2);
-      aValues[3].push(v3);
+    if (data[sId]){
+      for (let i = 0; i < 4; i++) {
+        let v0 = _r_(5, 15);
+        let v1 = _r_(25, 35);
+        let v3 = _r_(5, 10);
+        let v2 = 100 - v0 - v1 - v3;
+        aValues[0].push(v0);
+        aValues[1].push(v1);
+        aValues[2].push(v2);
+        aValues[3].push(v3);
+      }
     }
     oCacheDataArea[sId] = aValues;
     return aValues;
   };
-  
+  console.log(oCacheDataArea)
+  // console.log(data.length);
   let oCacheDataPop = {};
+  // console.log('BI' == data[3]['id']);
   let getRandomDataPop = function (sId) {
     if (oCacheDataPop[sId]) {
       return oCacheDataPop[sId];
     }
     let aValues = [];
-    let iPop = ZC._r_(2000000, 8000000);
-    for (let i = 0; i < data.length; i++) {
-      aValues.push(iPop);
-      iPop += _r_(-20000, 20000);
+    // let iPop = ZC._r_(2000000, 8000000);
+    // for (let i = 0; i < data.length; i++) {
+    //   aValues.push(iPop);
+    //   iPop += _r_(-20000, 20000);
+    // }
+    if(data[sId]){
+      for (let i = 0; i < data[sId]['data'].length; i++) {
+        aValues.push(data[sId]['data'][i]);
+      }
     }
     oCacheDataPop[sId] = [aValues];
     return [aValues];
+  
   };
+  
+  console.log(oCacheDataPop);
   
   let updateAreaPopCharts = function (sId) {
     zingchart.exec('myChart', 'setdata', {
@@ -101,81 +121,18 @@ let data = [
     zingchart.exec('myChart', 'update');
   }
   
-  zingchart.bind('myChart', 'node_click', function (p) {
-    if (p.graphid.indexOf('zc-graph-pie') === 0) {
-      updateAreaPopCharts(p.graphid.replace('zc-graph-pie', ''));
-    }
-  });
+  // zingchart.bind('myChart', 'node_click', function (p) {
+  //   if (p.graphid.indexOf('zc-graph-pie') === 0) {
+  //     updateAreaPopCharts(p.graphid.replace('zc-graph-pie', ''));
+  //   }
+  // });
   zingchart.bind('myChart', 'shape_click', function (p) {
     if (p.shape.mapItem) {
       updateAreaPopCharts(p.shape.id);
     }
   });
   
-  let addPieGraphs = function () {
-    for (let i = 0; i < data.length; i++) {
-      let info = data[i];
-      let xy = zingchart.maps.getXY('mapvnm', [info[1], info[2]]);
-      let oGraph = {
-        id: 'pie' + info[6],
-        type: 'pie',
-        x: xy[0] - 80 + (oOffsets[info[6]] ? oOffsets[info[6]][0] : 0),
-        y: xy[1] - 25 + (oOffsets[info[6]] ? oOffsets[info[6]][1] : 0),
-        width: '160px',
-        height: '50px',
-        backgroundColor: 'none',
-        plotarea: {
-          margin: '2px'
-        },
-        plot: {
-          detach: false,
-          alpha: 0.75,
-          borderWidth: '0px',
-          valueBox: {
-            visible: false
-          }
-        },
-        title: {
-          fontSize: '10px',
-          offsetY: '40px',
-          fontWeight: 'bold',
-          text: info[0]
-        },
-        tooltip: {
-          padding: '10px',
-          fontSize: '13px',
-          fontWeight: 'bold',
-          text: '%node-value% in %plot-text'
-        },
-        series: [{
-          text: 'Settlement Area',
-          values: [info[5]],
-          backgroundColor: '#d15c5c'
-        },
-        {
-          text: 'Forest Area',
-          values: [info[4]],
-          backgroundColor: '#56b556'
-        },
-        {
-          text: 'Agriculture',
-          values: [info[3]],
-          backgroundColor: '#e5e510'
-        },
-        {
-          text: 'Other',
-          values: [Number((100 - info[3] - info[4] - info[5]).toFixed(1))],
-          backgroundColor: '#999'
-        }
-        ]
-      };
-      zingchart.exec('myChart', 'addgraph', {
-        data: oGraph,
-        update: false
-      });
-    }
-    zingchart.exec('myChart', 'update');
-  }
+  
   
   var getMapData = function (sId) {
     let oGraphMainMap = {
@@ -205,7 +162,7 @@ let data = [
           height: '580px',
           id: 'mapvnm',
           name: 'vnm',
-          zooming: false,
+          zooming: true,
           panning: false,
           scrolling: false,
           scale: true,
@@ -232,7 +189,8 @@ let data = [
     return oGraphMainMap;
   };
   
-  let aAreaValues = getRandomDataArea(data[0][6]);
+  let aAreaValues = getRandomDataArea('HN');
+  console.log(aAreaValues)
   let oGraphHistoryArea = {
     id: 'histarea',
     backgroundColor: 'none',
@@ -249,7 +207,7 @@ let data = [
     subtitle: {
       fontSize: '12px',
       offsetY: '-5px',
-      text: getNameById(data[0][6])
+      text: getNameById('HN')
     },
     source: {
       text: '(*) random data'
@@ -306,7 +264,8 @@ let data = [
     ]
   };
   
-  let aPopValues = getRandomDataPop(data[0][6]);
+  let aPopValues = getRandomDataPop('HN');
+  console.log(aPopValues);
   let oGraphHistoryPop = {
     id: 'histpop',
     backgroundColor: 'none',
@@ -322,7 +281,7 @@ let data = [
     subtitle: {
       fontSize: '12px',
       offsetY: '-5px',
-      text: getNameById(data[0][6])
+      text: getNameById('HN')
     },
     source: {
       text: '(*) random data'
@@ -336,7 +295,7 @@ let data = [
       text: 'Population in %scale-key-text: %node-value'
     },
     scaleX: {
-      values: '1:5:1',
+      values: '1:12:1',
       maxItems: 99,
       itemsOverlap: true,
       item: {
@@ -367,7 +326,7 @@ let data = [
         type: 'diamond',
         backgroundColor: '#666'
       },
-      values: aPopValues[0]
+      values: aPopValues
     }]
   };
   
@@ -408,17 +367,17 @@ let data = [
       sizeFactor: 0.8
     },
     series: [{
-      text: 'Settlement Area',
+      text: 'Software',
       values: [1],
       backgroundColor: '#d15c5c'
     },
     {
-      text: 'Forest Area',
+      text: 'Hardware',
       values: [1],
       backgroundColor: '#56b556'
     },
     {
-      text: 'Agriculture',
+      text: 'Bussiness',
       values: [1],
       backgroundColor: '#e5e510'
     },
@@ -436,7 +395,7 @@ let data = [
     borderColor: '#999',
     borderWidth: '1px',
     graphset: [
-      getMapData(data[0][6]),
+      getMapData('HN'),
       oGraphHistoryArea,
       oGraphHistoryPop,
       oGraphLegend
@@ -447,7 +406,6 @@ let data = [
   zingchart.bind('myChart', 'load', function () {
     if (bInit) {
       bInit = false;
-      addPieGraphs();
     }
   });
   
@@ -463,3 +421,8 @@ let data = [
       width: '100%'
     });
   });
+};
+fetchMoviesJSON();
+
+
+// better placement to avoid pie overla
