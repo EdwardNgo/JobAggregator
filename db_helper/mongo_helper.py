@@ -7,6 +7,7 @@ from datetime import datetime
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 import json
+import pandas as pd
 
 client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
 
@@ -29,7 +30,8 @@ class Job(object):
         # col.updateMany({},{"$set":{"id":ObjectId})
         cursor = col.aggregate([{
         '$sort': {
-            'published': -1
+            'published': -1,
+            'updated_time':-1
         }
         }
         ])
@@ -90,9 +92,16 @@ def getRegionJobCount(collection_name):
     json_data = json.loads(json_data)
     return json_data
 
-def simpleAnalyse(collection_name,field,top=5):
+def simpleAnalyse(collection_name,field,month='6-2021',top=5):
     client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
     cursor = client['Job_Aggregator'][collection_name].aggregate([
+        {
+            '$match': {
+                'month_year': {
+                    '$eq': f'{month}'
+                }
+            }
+        },
         {
             '$group': {
                 '_id': {
@@ -144,7 +153,7 @@ def recruitmentByDay(collection_name,month):
         incrDay['Date'] = i['_id']['month_year']
         incrDay['numberOfRecruit'] = i['count']
         incrDayList.append(incrDay)
-    print(incrDayList)
+    # print(incrDayList)
     incrDayList.sort(key = lambda x:x['Date'])#phai sort theo ngay tu dau thang den cuoi thang
     day_dict = dict()
     for day in incrDayList:
@@ -158,5 +167,11 @@ if __name__ == '__main__':
     # # jobinsert.insertJobData([{'a':1},{'b':2}],'fb_job')
     # jobinsert.removeDuplicateData('site_job')
     # print(simpleAnalyse('raw_site_job','company'))
-    # print(recruitmentByDay('raw_site_job','4-2021'))
+    # data = []
+    # for i in ['1-2021','2-2021','3-2021','4-2021','5-2021']:
+    #     _,res = recruitmentByDay('new_raw_site_job',i)
+    #     print(res)
+    #     data += res
+    # df = pd.json_normalize(data)
+    # df.to_csv("test.csv")
     print(getRegionJobCount("new_raw_site_job"))

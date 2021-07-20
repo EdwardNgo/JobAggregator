@@ -66,7 +66,8 @@ def mongoToEs(colname,index_name):
     create_index(es,index_name)
     for data in jobData:
         # print(data)
-        # print(data)
+        print(data)
+        data['fb_id'] = data['id']
         data['id'] = str(data['_id'])
         data.pop("_id", None)
         store_record(es,index_name,data)

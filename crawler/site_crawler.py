@@ -99,7 +99,6 @@ class Crawler(object):
                     # job = {'url':'','title':'','img':'','city':'','salary':'','update_time':'','company':'','month_year':''}
                     job = dict()
                     # compared_job =  {'url':'','title':'','img':'','city':'','salary':'','update_time':''}
-
                     job['url'] = getUrl(item,self.job_list_selector,url)
                     job['title'] = getTitle(item,self.title_selector)
                     job['img'] = getImg(item,self.img_selector)
@@ -129,7 +128,7 @@ class Crawler(object):
                     news_time = datetime.strptime(job['update_time'].replace("/20","/"),"%d/%m/%y")
                     current_day  = datetime.today()
                     delta = current_day - news_time
-                    if(delta.days > 1):#neu tin duoc lay ma da ra truoc 2 ngay thi khong can phai lay nua -> tat ca cac tin sau cung the
+                    if(delta.days > 2):#neu tin duoc lay ma da ra truoc 2 ngay thi khong can phai lay nua -> tat ca cac tin sau cung the
                         flag = False
                         break
                     # print(job)

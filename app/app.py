@@ -22,12 +22,6 @@ def get_job(data,offset = 0,per_page = 25):
 @app.route('/')
 def index():
     jobData = job.getJobData('new_raw_site_job')
-    print(jobData)
-    # newData = []
-    # for data in jobData:
-    #     data['converted_id'] = str(data['_id']).replace('1','A').replace('2','b').replace('3','c').replace('4','d').replace('5','e').replace('6','f').replace('7','g').replace('8','h').replace('9','i').replace('0','k')
-    #     newData.append(data)
-    # print(data)
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
     total = len(jobData)
@@ -46,7 +40,7 @@ def search():
     if request.method == "POST":
         query = request.form['query']
         print(query)
-        query_res = search_record('new_raw_site_job',query)
+        query_res = search_record('new_raw_site_job_2',query)
         return render_template('search.html',queryData = query_res)
     return render_template('index.html')
 
@@ -55,7 +49,7 @@ def search_fb():
     if request.method == "POST":
         query = request.form['query_fb']
         print(query)
-        query_res = search_record('fb_job',query)
+        query_res = search_record('fb_job_2',query)
         print(query_res)
         format_query_res = []
         for data in query_res:
@@ -106,7 +100,7 @@ def analytics():
     cityLabel  = list(topCity.keys())
     cityValue = list(topCity.values())
     #thong ke luong tin tuyen dung theo ngay
-    dailyRecruitment = recruitmentByDay('new_raw_site_job','5-2021')
+    dailyRecruitment = recruitmentByDay('new_raw_site_job','7-2021')
     dailyRecruitmentLabel = list(dailyRecruitment.keys())
     dailyRecruitmentValue = list(dailyRecruitment.values())
     print(dailyRecruitment)
@@ -128,6 +122,7 @@ def analytics():
 def jobById(id):
     resp = job.getJobById('new_raw_site_job',id)
     json_resp = json.loads(resp)
+    # print(json_resp)
     if 'details' not in json_resp.keys():
         json_resp['details'] =['Khong co thong tin cho job nay. Xem them tai: ' ,json_resp['url']]
     json_resp['cleaned_text'] = []

@@ -4,7 +4,7 @@ def main():
     test = Crawler('itviec',
     ['https://itviec.com/it-jobs?page={page_num}'],
     'h2.title > a',
-    'div.logo-wrapper > a > img',
+    'div.logo-wrapper > a > picture > img',
     'h2.title',
     '',
     'div.tag-list',

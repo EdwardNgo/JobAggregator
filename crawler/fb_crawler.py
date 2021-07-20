@@ -125,7 +125,7 @@ if __name__ == "__main__":
             test =ApiCrawler(access_token,'https://graph.facebook.com/v10.0/')
             for group in groups:
                 # try:
-                test.getGroupPosts(group,900)
+                test.getGroupPosts(group,100)
                 # except Exception as e:
                 #     print(e)
         else:

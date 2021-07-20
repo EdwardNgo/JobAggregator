@@ -22,6 +22,7 @@ def getImg(item,selector):
     except:
         return item.select_one(selector)['src']
 
+
 def getCity(item,selector):
     try:
         return cityNormalize(textNormalize(item.select_one(selector).text))

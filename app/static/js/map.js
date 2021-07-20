@@ -276,7 +276,7 @@ async function fetchMoviesJSON() {
     type: 'area',
     title: {
       fontSize: '14px',
-      text: 'Historic data of population size (*)'
+      text: 'Historic data of recruitment size (*)'
     },
     subtitle: {
       fontSize: '12px',
